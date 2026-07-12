@@ -1,31 +1,248 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      precision: 2
+    currency:
+      format:
+        unit: "$"
+        separator: "."
+        delimiter: ","
+        format: "%u%n"
+        precision: 2
+    percentage:
+      format:
+        delimiter: ","
+        format: "%n%"
+
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: "can't be blank"
+      taken: "has already been taken"
+      invalid: "is invalid"
+      confirmation: "doesn't match confirmation"
+      too_long: "is too long (maximum is %{count} characters)"
+      too_short: "is too short (minimum is %{count} characters)"
+      wrong_length: "is the wrong length (should be %{count} characters)"
+      not_a_number: "is not a number"
+      not_an_integer: "must be an integer"
+      greater_than: "must be greater than %{count}"
+      greater_than_or_equal_to: "must be greater than or equal to %{count}"
+      equal_to: "must be equal to %{count}"
+      less_than: "must be less than %{count}"
+      less_than_or_equal_to: "must be less than or equal to %{count}"
+      other_than: "must be other than %{count}"
+      odd: "must be odd"
+      even: "must be even"
+      record_invalid: "Validation failed: %{errors}"
+      restrict_dependent_destroy:
+        has_one: "Cannot delete record because a dependent %{record} exists"
+        has_many: "Cannot delete record because dependent %{record} exist"
+      inclusion: "is not included in the list"
+      exclusion: "is reserved"
+      accepted: "must be accepted"
+      empty: "can't be empty"
+      present: "must be blank"
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Validation failed: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "Cannot delete record because a dependent %{record} exists"
+          has_many: "Cannot delete record because dependent %{record} exist"
+      models:
+        product:
+          attributes:
+            image:
+              content_type: "must be JPEG, PNG, or WebP"
+              byte_size: "must be less than 5MB"
+            stock_quantity:
+              not_an_integer: "must be an integer"
+
+    models:
+      user: "User"
+      product: "Product"
+      category: "Category"
+      cart_item: "Cart Item"
+      cart: "Cart"
+
+    attributes:
+      user:
+        email_address: "Email address"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        admin: "Admin"
+      product:
+        name: "Name"
+        description: "Description"
+        price: "Price"
+        stock_quantity: "Stock"
+        sku: "SKU"
+        status: "Status"
+        featured: "Featured"
+        weight: "Weight"
+        image: "Image"
+        category: "Category"
+        category_id: "Category"
+      category:
+        name: "Name"
+        slug: "Slug"
+        description: "Description"
+      cart_item:
+        quantity: "Quantity"
+      cart:
+        total: "Total"
+
+  labels:
+    sign_in: "Sign In"
+    sign_up: "Sign Up"
+    logout: "Logout"
+    products: "Products"
+    categories: "Categories"
+    users: "Users"
+    cart: "Cart"
+    dashboard: "Dashboard"
+    search: "Search"
+    filter: "Filter"
+    clear_filters: "Clear filters"
+    back_to_catalog: "Back to catalog"
+    back_to_list: "Back to list"
+    continue_shopping: "Continue Shopping"
+    add_to_cart: "Add to Cart"
+    remove: "Remove"
+    edit: "Edit"
+    delete: "Delete"
+    restore: "Restore"
+    new_product: "New Product"
+    new_category: "New Category"
+    manage_products: "Manage Products"
+    manage_categories: "Manage Categories"
+    forgot_password: "Forgot your password?"
+    email_reset_instructions: "Email reset instructions"
+    update_password: "Update your password"
+    save_new_password: "Save new password"
+    send_reset_instructions: "Send reset instructions"
+    create_account: "Create Account"
+    already_have_account: "Already have an account?"
+    dont_have_account: "Don't have an account?"
+    products_by_category: "Products by Category"
+    products_by_status: "Products by Status"
+    quick_actions: "Quick Actions"
+    recent_products: "Recent Products"
+    low_stock_alert: "Low Stock Alert"
+    units_remaining: "units remaining"
+    no_products_found: "No products found"
+    cart_empty: "Your cart is empty"
+    browse_products: "Browse Products"
+    current_image: "Current image"
+    cancel: "Cancel"
+    total: "Total"
+    all_categories: "All Categories"
+    all_statuses: "All Statuses"
+    sort_by: "Sort by"
+    min_price: "Min price"
+    max_price: "Max price"
+    name: "Name"
+    price: "Price"
+    stock: "Stock"
+    quantity: "Quantity"
+    status: "Status"
+    actions: "Actions"
+    active: "Active"
+    draft: "Draft"
+    inactive: "Inactive"
+    archived: "Archived"
+    discarded: "Discarded"
+    description: "Description"
+    created: "Created"
+    updated: "Updated"
+    yes: "Yes"
+    no: "No"
+    confirm: "Confirm"
+    are_you_sure: "Are you sure?"
+    in_stock: "in stock"
+    units: "units"
+    grams: "g"
+    loading: "Loading..."
+    one_error_prohibited: "error prohibited from being saved"
+    other_errors_prohibited: "errors prohibited from being saved"
+
+  product_status:
+    active: "Active"
+    draft: "Draft"
+    inactive: "Inactive"
+    archived: "Archived"
+
+  category_status:
+    active: "Active"
+    discarded: "Discarded"
+
+  admin:
+    products:
+      create:
+        notice: "Product created successfully."
+      update:
+        notice: "Product updated successfully."
+      destroy:
+        notice: "Product discarded successfully."
+      restore:
+        notice: "Product restored successfully."
+
+    categories:
+      create:
+        notice: "Category created successfully."
+      update:
+        notice: "Category updated successfully."
+      destroy:
+        notice: "Category discarded successfully."
+      restore:
+        notice: "Category restored successfully."
+
+    users:
+      update:
+        notice: "User updated successfully."
+
+    base:
+      not_authorized:
+        alert: "You are not authorized to perform this action."
+
+  registrations:
+    create:
+      notice: "Welcome! Your account has been created."
+
+  sessions:
+    create:
+      alert: "Try another email address or password."
+    rate_limit:
+      alert: "Try again later."
+
+  passwords:
+    create:
+      notice: "Password reset instructions sent (if user with that email address exists)."
+    update:
+      notice: "Password has been reset."
+      alert: "Passwords did not match."
+    set_user_by_token:
+      alert: "Password reset link is invalid or has expired."
+
+  carts:
+    add_item:
+      notice: "Item added to cart."
+      alert: "Product not found."
+    remove_item:
+      notice: "Item removed from cart."

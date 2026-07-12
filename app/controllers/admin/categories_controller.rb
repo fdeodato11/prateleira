@@ -21,7 +21,7 @@ module Admin
       authorize @category
 
       if @category.save
-        redirect_to admin_categories_path, notice: "Category created successfully."
+        redirect_to admin_categories_path, notice: t(".notice")
       else
         render :new, status: :unprocessable_entity
       end
@@ -35,7 +35,7 @@ module Admin
       authorize @category
 
       if @category.update(category_params)
-        redirect_to admin_categories_path, notice: "Category updated successfully."
+        redirect_to admin_categories_path, notice: t(".notice")
       else
         render :edit, status: :unprocessable_entity
       end
@@ -44,13 +44,13 @@ module Admin
     def destroy
       authorize @category
       @category.discard!
-      redirect_to admin_categories_path, notice: "Category discarded successfully."
+      redirect_to admin_categories_path, notice: t(".notice")
     end
 
     def restore
       authorize @category
       @category.undiscard!
-      redirect_to admin_categories_path, notice: "Category restored successfully."
+      redirect_to admin_categories_path, notice: t(".notice")
     end
 
     private

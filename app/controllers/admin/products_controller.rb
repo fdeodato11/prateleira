@@ -28,7 +28,7 @@ module Admin
       authorize @product
 
       if @product.save
-        redirect_to admin_products_path, notice: "Product created successfully."
+        redirect_to admin_products_path, notice: t(".notice")
       else
         render :new, status: :unprocessable_entity
       end
@@ -42,7 +42,7 @@ module Admin
       authorize @product
 
       if @product.update(product_params)
-        redirect_to admin_products_path, notice: "Product updated successfully."
+        redirect_to admin_products_path, notice: t(".notice")
       else
         render :edit, status: :unprocessable_entity
       end
@@ -51,13 +51,13 @@ module Admin
     def destroy
       authorize @product
       @product.discard!
-      redirect_to admin_products_path, notice: "Product discarded successfully."
+      redirect_to admin_products_path, notice: t(".notice")
     end
 
     def restore
       authorize @product, :restore?
       @product.undiscard!
-      redirect_to admin_products_path, notice: "Product restored successfully."
+      redirect_to admin_products_path, notice: t(".notice")
     end
 
     private

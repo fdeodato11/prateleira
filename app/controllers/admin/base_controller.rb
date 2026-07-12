@@ -12,7 +12,7 @@ module Admin
     private
 
     def not_authorized
-      redirect_to root_path, alert: "You are not authorized to perform this action."
+      redirect_to root_path, alert: t(".not_authorized.alert")
     end
   end
 end

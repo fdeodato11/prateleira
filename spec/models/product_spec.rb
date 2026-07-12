@@ -10,32 +10,32 @@ RSpec.describe Product, type: :model do
     it "requires a name" do
       product = build(:product, name: nil)
       expect(product).not_to be_valid
-      expect(product.errors[:name]).to include("can't be blank")
+      expect(product.errors[:name]).to include("não pode ficar em branco")
     end
 
     it "requires a non-negative price" do
       product = build(:product, price: -1)
       expect(product).not_to be_valid
-      expect(product.errors[:price]).to include("must be greater than or equal to 0")
+      expect(product.errors[:price]).to include("deve ser maior ou igual a 0")
     end
 
     it "requires stock quantity to be an integer >= 0" do
       product = build(:product, stock_quantity: -1)
       expect(product).not_to be_valid
-      expect(product.errors[:stock_quantity]).to include("must be greater than or equal to 0")
+      expect(product.errors[:stock_quantity]).to include("deve ser maior ou igual a 0")
     end
 
     it "requires a unique SKU" do
       create(:product, sku: "TEST-SKU")
       product = build(:product, sku: "TEST-SKU")
       expect(product).not_to be_valid
-      expect(product.errors[:sku]).to include("has already been taken")
+      expect(product.errors[:sku]).to include("já está em uso")
     end
 
     it "requires a status" do
       product = build(:product, status: nil)
       expect(product).not_to be_valid
-      expect(product.errors[:status]).to include("can't be blank")
+      expect(product.errors[:status]).to include("não pode ficar em branco")
     end
   end
 

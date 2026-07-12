@@ -10,27 +10,27 @@ RSpec.describe Category, type: :model do
     it "requires a name" do
       category = build(:category, name: nil)
       expect(category).not_to be_valid
-      expect(category.errors[:name]).to include("can't be blank")
+      expect(category.errors[:name]).to include("não pode ficar em branco")
     end
 
     it "requires a unique name" do
       create(:category, name: "Electronics")
       category = build(:category, name: "Electronics")
       expect(category).not_to be_valid
-      expect(category.errors[:name]).to include("has already been taken")
+      expect(category.errors[:name]).to include("já está em uso")
     end
 
     it "requires a slug" do
       category = build(:category, slug: nil)
       expect(category).not_to be_valid
-      expect(category.errors[:slug]).to include("can't be blank")
+      expect(category.errors[:slug]).to include("não pode ficar em branco")
     end
 
     it "requires a unique slug" do
       create(:category, slug: "electronics")
       category = build(:category, slug: "electronics")
       expect(category).not_to be_valid
-      expect(category.errors[:slug]).to include("has already been taken")
+      expect(category.errors[:slug]).to include("já está em uso")
     end
   end
 

@@ -1,0 +1,276 @@
+pt-BR:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d de %B"
+      long: "%d de %B de %Y"
+    day_names: [Domingo, Segunda-feira, Terça-feira, Quarta-feira, Quinta-feira, Sexta-feira, Sábado]
+    abbr_day_names: [Dom, Seg, Ter, Qua, Qui, Sex, Sáb]
+    month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
+    abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez]
+
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      short: "%d de %B, %H:%M"
+      long: "%d de %B de %Y, %H:%M"
+    am: "AM"
+    pm: "PM"
+
+  number:
+    format:
+      separator: ","
+      delimiter: "."
+      precision: 2
+    currency:
+      format:
+        unit: "R$"
+        separator: ","
+        delimiter: "."
+        format: "%u %n"
+        precision: 2
+    percentage:
+      format:
+        delimiter: "."
+        format: "%n%"
+    precision:
+      format:
+        delimiter: "."
+    human:
+      format:
+        delimiter: "."
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      inclusion: "não está incluído na lista"
+      exclusion: "não está disponível"
+      invalid: "não é válido"
+      confirmation: "não confere com a confirmação"
+      accepted: "deve ser aceito"
+      empty: "não pode ficar vazio"
+      blank: "não pode ficar em branco"
+      present: "deve ficar em branco"
+      too_long:
+        one: "é muito longo (máximo: %{count} caractere)"
+        other: "é muito longo (máximo: %{count} caracteres)"
+      too_short:
+        one: "é muito curto (mínimo: %{count} caractere)"
+        other: "é muito curto (mínimo: %{count} caracteres)"
+      wrong_length:
+        one: "não possui o tamanho esperado (%{count} caractere)"
+        other: "não possui o tamanho esperado (%{count} caracteres)"
+      taken: "já está em uso"
+      not_a_number: "não é um número"
+      not_an_integer: "não é um número inteiro"
+      greater_than: "deve ser maior que %{count}"
+      greater_than_or_equal_to: "deve ser maior ou igual a %{count}"
+      equal_to: "deve ser igual a %{count}"
+      less_than: "deve ser menor que %{count}"
+      less_than_or_equal_to: "deve ser menor ou igual a %{count}"
+      other_than: "deve ser diferente de %{count}"
+      odd: "deve ser ímpar"
+      even: "deve ser par"
+      record_invalid: "A validação falhou: %{errors}"
+      restrict_dependent_destroy:
+        has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
+        has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "A validação falhou: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
+          has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
+      models:
+        product:
+          attributes:
+            image:
+              content_type: "deve ser JPEG, PNG ou WebP"
+              byte_size: "deve ser menor que 5MB"
+            stock_quantity:
+              not_an_integer: "deve ser um número inteiro"
+
+    models:
+      user: "Usuário"
+      product: "Produto"
+      category: "Categoria"
+      cart_item: "Item do carrinho"
+      cart: "Carrinho"
+
+    attributes:
+      user:
+        email_address: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação da senha"
+        admin: "Administrador"
+      product:
+        name: "Nome"
+        description: "Descrição"
+        price: "Preço"
+        stock_quantity: "Estoque"
+        sku: "SKU"
+        status: "Status"
+        featured: "Destaque"
+        weight: "Peso"
+        image: "Imagem"
+        category: "Categoria"
+        category_id: "Categoria"
+      category:
+        name: "Nome"
+        slug: "Slug"
+        description: "Descrição"
+      cart_item:
+        quantity: "Quantidade"
+      cart:
+        total: "Total"
+
+  labels:
+    sign_in: "Entrar"
+    sign_up: "Criar Conta"
+    logout: "Sair"
+    products: "Produtos"
+    categories: "Categorias"
+    users: "Usuários"
+    cart: "Carrinho"
+    dashboard: "Painel"
+    search: "Buscar"
+    filter: "Filtrar"
+    clear_filters: "Limpar filtros"
+    back_to_catalog: "Voltar ao catálogo"
+    back_to_list: "Voltar à lista"
+    continue_shopping: "Continuar Comprando"
+    add_to_cart: "Adicionar ao Carrinho"
+    remove: "Remover"
+    edit: "Editar"
+    delete: "Excluir"
+    restore: "Restaurar"
+    new_product: "Novo Produto"
+    new_category: "Nova Categoria"
+    manage_products: "Gerenciar Produtos"
+    manage_categories: "Gerenciar Categorias"
+    forgot_password: "Esqueceu sua senha?"
+    email_reset_instructions: "Enviar instruções"
+    update_password: "Atualizar sua senha"
+    save_new_password: "Salvar nova senha"
+    send_reset_instructions: "Enviar instruções"
+    create_account: "Criar Conta"
+    already_have_account: "Já tem uma conta?"
+    dont_have_account: "Não tem uma conta?"
+    products_by_category: "Produtos por Categoria"
+    products_by_status: "Produtos por Status"
+    quick_actions: "Ações Rápidas"
+    recent_products: "Produtos Recentes"
+    low_stock_alert: "Alerta de Estoque Baixo"
+    units_remaining: "unidades restantes"
+    no_products_found: "Nenhum produto encontrado"
+    cart_empty: "Seu carrinho está vazio"
+    browse_products: "Ver Produtos"
+    current_image: "Imagem atual"
+    cancel: "Cancelar"
+    total: "Total"
+    all_categories: "Todas as Categorias"
+    all_statuses: "Todos os Status"
+    sort_by: "Ordenar por"
+    min_price: "Preço mín."
+    max_price: "Preço máx."
+    name: "Nome"
+    price: "Preço"
+    stock: "Estoque"
+    quantity: "Quantidade"
+    status: "Status"
+    actions: "Ações"
+    active: "Ativo"
+    draft: "Rascunho"
+    inactive: "Inativo"
+    archived: "Arquivado"
+    discarded: "Excluído"
+    description: "Descrição"
+    created: "Criado em"
+    updated: "Atualizado em"
+    yes: "Sim"
+    no: "Não"
+    confirm: "Confirmar"
+    are_you_sure: "Tem certeza?"
+    in_stock: "em estoque"
+    units: "unidades"
+    grams: "g"
+    loading: "Carregando..."
+    one_error_prohibited: "erro impediu que fosse salvo"
+    other_errors_prohibited: "erros impediram que fosse salvo"
+
+  product_status:
+    active: "Ativo"
+    draft: "Rascunho"
+    inactive: "Inativo"
+    archived: "Arquivado"
+
+  category_status:
+    active: "Ativo"
+    discarded: "Excluído"
+
+  admin:
+    products:
+      create:
+        notice: "Produto criado com sucesso."
+      update:
+        notice: "Produto atualizado com sucesso."
+      destroy:
+        notice: "Produto removido com sucesso."
+      restore:
+        notice: "Produto restaurado com sucesso."
+
+    categories:
+      create:
+        notice: "Categoria criada com sucesso."
+      update:
+        notice: "Categoria atualizada com sucesso."
+      destroy:
+        notice: "Categoria removida com sucesso."
+      restore:
+        notice: "Categoria restaurada com sucesso."
+
+    users:
+      update:
+        notice: "Usuário atualizado com sucesso."
+
+    base:
+      not_authorized:
+        alert: "Você não tem permissão para realizar esta ação."
+
+  registrations:
+    create:
+      notice: "Bem-vindo! Sua conta foi criada."
+
+  sessions:
+    create:
+      alert: "E-mail ou senha inválidos."
+    rate_limit:
+      alert: "Tente novamente mais tarde."
+
+  passwords:
+    create:
+      notice: "Instruções de redefinição de senha enviadas (se o usuário existir)."
+    update:
+      notice: "Senha redefinida com sucesso."
+      alert: "Senhas não conferem."
+    set_user_by_token:
+      alert: "Link de redefinição inválido ou expirado."
+
+  carts:
+    add_item:
+      notice: "Item adicionado ao carrinho."
+      alert: "Produto não encontrado."
+    remove_item:
+      notice: "Item removido do carrinho."
