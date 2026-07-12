@@ -45,7 +45,7 @@ gem "pundit", "~> 2.4"
 
 
 # Soft delete
-gem "discard", "~> 1.4"
+gem "discard", "~> 2.0"
 
 # Pagination
 gem "pagy", "~> 9.3"
