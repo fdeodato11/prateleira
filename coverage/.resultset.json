@@ -25,25 +25,21 @@
       },
       "/home/felipe/projetos/prateleira/prateleira/app/controllers/admin/dashboard_controller.rb": {
         "lines": [
-          0,
-          0,
-          0,
-          0,
+          1,
+          1,
+          1,
+          1,
           null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           null
-        ],
-        "branches": {},
-        "methods": {
-          "[\"DashboardController\", :show, 3, 4, 12, 7]": 0
-        }
+        ]
       },
       "/home/felipe/projetos/prateleira/prateleira/app/controllers/admin/products_controller.rb": {
         "lines": [
@@ -136,7 +132,7 @@
           1,
           null,
           1,
-          10,
+          11,
           null,
           null
         ]
@@ -163,36 +159,36 @@
           null,
           null,
           1,
-          11,
+          14,
           null,
           null,
           1,
-          17,
+          20,
           null,
           null,
           1,
-          17,
+          20,
+          null,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null,
+          1,
+          13,
+          null,
+          null,
+          1,
+          13,
+          13,
+          13,
+          null,
           null,
           null,
           1,
           1,
           1,
-          null,
-          null,
-          1,
-          10,
-          null,
-          null,
-          1,
-          10,
-          10,
-          10,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
           null,
           null
         ]
@@ -300,17 +296,17 @@
           null,
           null,
           1,
-          10,
-          10,
-          10,
+          14,
+          13,
+          13,
           null,
-          0,
+          1,
           null,
           null,
           null,
           1,
-          0,
-          0,
+          1,
+          1,
           null,
           null
         ]
@@ -430,7 +426,7 @@
           76,
           139,
           null,
-          9,
+          11,
           9,
           1,
           6,
@@ -463,10 +459,10 @@
           null,
           1,
           null,
-          30,
+          38,
           null,
           1,
-          19,
+          20,
           null,
           null
         ]
@@ -477,8 +473,8 @@
           1,
           null,
           1,
-          19,
-          19,
+          20,
+          20,
           null,
           null,
           1,
@@ -532,7 +528,7 @@
         "lines": [
           1,
           1,
-          1,
+          2,
           null,
           null
         ]
@@ -588,6 +584,6 @@
         ]
       }
     },
-    "timestamp": 1783878689
+    "timestamp": 1783878826
   }
 }
