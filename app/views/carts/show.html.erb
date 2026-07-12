@@ -1,5 +1,5 @@
 <div class="cart-page">
-  <h1>Shopping Cart</h1>
+  <h1><%= icon("shopping-cart", size: 28) %> Shopping Cart</h1>
 
   <% if @cart.cart_items.any? %>
     <div class="table-container">
@@ -21,7 +21,7 @@
               <td><%= item.quantity %></td>
               <td><%= number_to_currency item.product.price * item.quantity %></td>
               <td>
-                <%= button_to "Remove", remove_item_cart_path(product_id: item.product_id), method: :delete, class: "btn btn-danger btn-sm" %>
+                <%= button_to remove_item_cart_path(product_id: item.product_id), method: :delete, class: "btn btn-danger btn-sm" do %><%= icon("trash-2") %> Remove<% end %>
               </td>
             </tr>
           <% end %>
@@ -37,12 +37,13 @@
     </div>
 
     <div class="cart-actions">
-      <%= link_to "Continue Shopping", products_path, class: "btn" %>
+      <%= link_to products_path, class: "btn" do %><%= icon("shopping-bag") %> Continue Shopping<% end %>
     </div>
   <% else %>
     <div class="cart-empty">
+      <%= icon("cart", css_class: "icon-lg", size: 48) %>
       <p>Your cart is empty.</p>
-      <%= link_to "Browse Products", products_path, class: "btn btn-primary" %>
+      <%= link_to products_path, class: "btn btn-primary" do %><%= icon("shopping-bag") %> Browse Products<% end %>
     </div>
   <% end %>
 </div>

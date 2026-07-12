@@ -1,7 +1,7 @@
 <div class="admin-header">
   <h1>Edit User: <%= @user.email_address %></h1>
   <div class="admin-actions">
-    <%= link_to "&larr; Back".html_safe, admin_users_path, class: "btn" %>
+    <%= link_to admin_users_path, class: "btn" do %><%= icon("arrow-left") %> Back<% end %>
   </div>
 </div>
 
@@ -15,8 +15,8 @@
     </div>
 
     <div class="form-actions">
-      <%= form.submit "Update", class: "btn btn-primary" %>
-      <%= link_to "Cancel", admin_users_path, class: "btn" %>
+      <%= form.button class: "btn btn-primary" do %><%= icon("check") %> Update<% end %>
+      <%= link_to admin_users_path, class: "btn" do %><%= icon("x") %> Cancel<% end %>
     </div>
   <% end %>
 </div>

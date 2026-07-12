@@ -505,6 +505,67 @@
           null
         ]
       },
+      "/home/felipe/projetos/prateleira/prateleira/app/helpers/icons_helper.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          158,
+          158,
+          null,
+          158,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          158,
+          null,
+          null,
+          null
+        ]
+      },
       "/home/felipe/projetos/prateleira/prateleira/app/jobs/application_job.rb": {
         "lines": [
           0,
@@ -870,6 +931,6 @@
         ]
       }
     },
-    "timestamp": 1783882487
+    "timestamp": 1783883176
   }
 }

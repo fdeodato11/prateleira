@@ -1,4 +1,4 @@
-<%= link_to "&larr; Back to Users".html_safe, admin_users_path, class: "back-link" %>
+<%= link_to admin_users_path, class: "back-link" do %><%= icon("arrow-left") %> Back to Users<% end %>
 
 <div class="detail-card">
   <div class="detail-header">

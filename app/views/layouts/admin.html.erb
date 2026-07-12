@@ -14,20 +14,20 @@
       <aside class="admin-sidebar">
         <%= link_to "Prateleira Virtual", root_path, class: "sidebar-logo" %>
         <nav>
-          <%= link_to "Dashboard", admin_dashboard_path %>
-          <%= link_to "Products", admin_products_path %>
-          <%= link_to "Categories", admin_categories_path %>
-          <%= link_to "Users", admin_users_path %>
-          <%= button_to "Logout", session_path, method: :delete, class: "btn btn-sm", form_class: "inline-form" %>
+          <%= link_to admin_dashboard_path do %><%= icon("dashboard") %> Dashboard<% end %>
+          <%= link_to admin_products_path do %><%= icon("package") %> Products<% end %>
+          <%= link_to admin_categories_path do %><%= icon("category") %> Categories<% end %>
+          <%= link_to admin_users_path do %><%= icon("users") %> Users<% end %>
+          <%= button_to session_path, method: :delete, class: "btn btn-sm", form_class: "inline-form" do %><%= icon("logout") %> Logout<% end %>
         </nav>
       </aside>
 
       <div class="admin-main">
         <% if notice %>
-          <div class="flash flash-notice"><%= notice %></div>
+          <div class="flash flash-notice"><%= icon("check-circle") %><%= notice %></div>
         <% end %>
         <% if alert %>
-          <div class="flash flash-alert"><%= alert %></div>
+          <div class="flash flash-alert"><%= icon("alert-triangle") %><%= alert %></div>
         <% end %>
 
         <%= yield %>

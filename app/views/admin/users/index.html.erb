@@ -1,7 +1,7 @@
 <div class="admin-header">
-  <h1>Users</h1>
+  <h1><%= icon("users", size: 28) %> Users</h1>
   <div class="admin-actions">
-    <%= link_to "Back to Dashboard", admin_dashboard_path, class: "btn" %>
+    <%= link_to admin_dashboard_path, class: "btn" do %><%= icon("dashboard") %> Back to Dashboard<% end %>
   </div>
 </div>
 
@@ -24,9 +24,9 @@
             <td><%= l user.created_at, format: :short %></td>
             <td>
               <div class="btn-group">
-                <%= link_to "Show", admin_user_path(user), class: "btn btn-sm" %>
+                <%= link_to admin_user_path(user), class: "btn btn-sm" do %><%= icon("user") %> Show<% end %>
                 <% if user != current_user %>
-                  <%= link_to "Edit", edit_admin_user_path(user), class: "btn btn-sm" %>
+                  <%= link_to edit_admin_user_path(user), class: "btn btn-sm" do %><%= icon("edit") %> Edit<% end %>
                 <% end %>
               </div>
             </td>
@@ -36,7 +36,8 @@
     </table>
   </div>
 <% else %>
-  <div class="empty-state">
-    <p>No users found.</p>
-  </div>
+    <div class="empty-state">
+      <%= icon("users", css_class: "icon-lg", size: 48) %>
+      <p>No users found.</p>
+    </div>
 <% end %>

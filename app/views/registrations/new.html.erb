@@ -1,6 +1,6 @@
 <div class="auth-page">
   <div class="auth-card">
-    <h1>Create Account</h1>
+    <h1><%= icon("user", size: 28) %> Create Account</h1>
     <div class="form-card">
       <%= form_with model: @user, url: registration_path do |form| %>
         <% if @user.errors.any? %>
@@ -33,12 +33,12 @@
         </div>
 
         <div class="form-actions">
-          <%= form.submit "Create Account", class: "btn btn-primary", style: "width:100%" %>
+          <%= form.button class: "btn btn-primary", style: "width:100%" do %><%= icon("user") %> Create Account<% end %>
         </div>
       <% end %>
 
       <div class="auth-links">
-        <%= link_to "Already have an account? Sign in", new_session_path %>
+        <%= link_to new_session_path do %><%= icon("arrow-left") %> Already have an account? Sign in<% end %>
       </div>
     </div>
   </div>

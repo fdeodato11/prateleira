@@ -1,6 +1,6 @@
 <div class="auth-page">
   <div class="auth-card">
-    <h1>Update your password</h1>
+    <h1><%= icon("edit", size: 28) %> Update your password</h1>
     <div class="form-card">
       <%= form_with url: password_path(params[:token]), method: :put do |form| %>
         <div class="form-group">
@@ -14,7 +14,7 @@
         </div>
 
         <div class="form-actions">
-          <%= form.submit "Save new password", class: "btn btn-primary", style: "width:100%" %>
+          <%= form.button class: "btn btn-primary", style: "width:100%" do %><%= icon("check") %> Save new password<% end %>
         </div>
       <% end %>
     </div>

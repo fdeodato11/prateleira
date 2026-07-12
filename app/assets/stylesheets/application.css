@@ -720,6 +720,29 @@ tbody tr:hover { background: #f8fafc; }
 
 .back-link:hover { color: var(--color-accent); text-decoration: none; }
 
+/* ── Icons ── */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.icon-lg {
+  width: 32px;
+  height: 32px;
+}
+
+.text-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  vertical-align: middle;
+}
+
+.inline-form { display: inline; }
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .admin-layout { flex-direction: column; }

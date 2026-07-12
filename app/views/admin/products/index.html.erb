@@ -1,15 +1,16 @@
 <div class="admin-header">
-  <h1>Products</h1>
+  <h1><%= icon("package", size: 28) %> Products</h1>
   <div class="admin-actions">
-    <%= link_to "New Product", new_admin_product_path, class: "btn btn-primary" %>
+    <%= link_to new_admin_product_path, class: "btn btn-primary" do %><%= icon("plus") %> New Product<% end %>
   </div>
 </div>
 
 <%= form_tag admin_products_path, method: :get, class: "search-bar" do %>
+  <%= icon("search") %>
   <%= search_field_tag :query, params[:query], placeholder: "Search..." %>
   <%= select_tag :category_id, options_from_collection_for_select(Category.kept.ordered, :id, :name, params[:category_id]), include_blank: "All Categories" %>
   <%= select_tag :status, options_for_select(Product.statuses.keys.map { |s| [s.humanize, s] }, params[:status]), include_blank: "All Statuses" %>
-  <%= submit_tag "Filter", class: "btn btn-primary" %>
+  <%= button_tag class: "btn btn-primary" do %><%= icon("filter") %> Filter<% end %>
 <% end %>
 
 <% if @products.any? %>
@@ -41,11 +42,11 @@
             <td><span class="status-badge status-<%= product.status %>"><%= product.status.humanize %></span></td>
             <td>
               <div class="btn-group">
-                <%= link_to "Edit", edit_admin_product_path(product), class: "btn btn-sm" %>
+                <%= link_to edit_admin_product_path(product), class: "btn btn-sm" do %><%= icon("edit") %> Edit<% end %>
                 <% if product.discarded? %>
-                  <%= button_to "Restore", restore_admin_product_path(product), method: :post, class: "btn btn-sm" %>
+                  <%= button_to restore_admin_product_path(product), method: :post, class: "btn btn-sm" do %><%= icon("refresh") %> Restore<% end %>
                 <% else %>
-                  <%= button_to "Delete", admin_product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+                  <%= button_to admin_product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" do %><%= icon("trash") %> Delete<% end %>
                 <% end %>
               </div>
             </td>
@@ -56,7 +57,8 @@
   </div>
   <%== pagy_nav(@pagy) %>
 <% else %>
-  <div class="empty-state">
-    <p>No products found.</p>
-  </div>
+    <div class="empty-state">
+      <%= icon("package", css_class: "icon-lg", size: 48) %>
+      <p>No products found.</p>
+    </div>
 <% end %>

@@ -83,7 +83,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.submit class: "btn btn-primary" %>
-    <%= link_to "Cancel", admin_products_path, class: "btn" %>
+    <%= f.button class: "btn btn-primary" do %><%= icon("check") %> <%= product.new_record? ? "Create Product" : "Update Product" %><% end %>
+    <%= link_to admin_products_path, class: "btn" do %><%= icon("x") %> Cancel<% end %>
   </div>
 <% end %>

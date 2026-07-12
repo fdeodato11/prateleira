@@ -1,4 +1,4 @@
-<%= link_to "&larr; Back to categories".html_safe, admin_categories_path, class: "back-link" %>
+<%= link_to admin_categories_path, class: "back-link" do %><%= icon("arrow-left") %> Back to categories<% end %>
 
 <div class="detail-card">
   <div class="detail-header">
@@ -23,11 +23,11 @@
   </div>
 
   <div class="detail-actions">
-    <%= link_to "Edit", edit_admin_category_path(@category), class: "btn btn-primary" %>
+    <%= link_to edit_admin_category_path(@category), class: "btn btn-primary" do %><%= icon("edit") %> Edit<% end %>
     <% if @category.discarded? %>
-      <%= button_to "Restore", restore_admin_category_path(@category), method: :post, class: "btn" %>
+      <%= button_to restore_admin_category_path(@category), method: :post, class: "btn" do %><%= icon("refresh") %> Restore<% end %>
     <% else %>
-      <%= button_to "Delete", admin_category_path(@category), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+      <%= button_to admin_category_path(@category), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" do %><%= icon("trash") %> Delete<% end %>
     <% end %>
   </div>
 </div>

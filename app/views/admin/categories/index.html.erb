@@ -1,7 +1,7 @@
 <div class="admin-header">
-  <h1>Categories</h1>
+  <h1><%= icon("category", size: 28) %> Categories</h1>
   <div class="admin-actions">
-    <%= link_to "New Category", new_admin_category_path, class: "btn btn-primary" %>
+    <%= link_to new_admin_category_path, class: "btn btn-primary" do %><%= icon("plus") %> New Category<% end %>
   </div>
 </div>
 
@@ -26,11 +26,11 @@
             <td><span class="status-badge <%= category.discarded? ? "status-inactive" : "status-active" %>"><%= category.discarded? ? "Discarded" : "Active" %></span></td>
             <td>
               <div class="btn-group">
-                <%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-sm" %>
+                <%= link_to edit_admin_category_path(category), class: "btn btn-sm" do %><%= icon("edit") %> Edit<% end %>
                 <% if category.discarded? %>
-                  <%= button_to "Restore", restore_admin_category_path(category), method: :post, class: "btn btn-sm" %>
+                  <%= button_to restore_admin_category_path(category), method: :post, class: "btn btn-sm" do %><%= icon("refresh") %> Restore<% end %>
                 <% else %>
-                  <%= button_to "Delete", admin_category_path(category), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+                  <%= button_to admin_category_path(category), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" do %><%= icon("trash") %> Delete<% end %>
                 <% end %>
               </div>
             </td>
@@ -40,8 +40,9 @@
     </table>
   </div>
 <% else %>
-  <div class="empty-state">
-    <p>No categories yet.</p>
-    <%= link_to "Create your first category", new_admin_category_path, class: "btn btn-primary" %>
-  </div>
+    <div class="empty-state">
+      <%= icon("category", css_class: "icon-lg", size: 48) %>
+      <p>No categories yet.</p>
+      <%= link_to new_admin_category_path, class: "btn btn-primary" do %><%= icon("plus") %> Create your first category<% end %>
+    </div>
 <% end %>

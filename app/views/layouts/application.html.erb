@@ -15,23 +15,23 @@
       <div class="header-inner">
         <%= link_to "Prateleira Virtual", root_path, class: "logo" %>
         <nav>
-          <%= link_to "Products", products_path %>
-          <%= link_to "Cart", cart_path %>
+          <%= link_to products_path do %><%= icon("package") %> Products<% end %>
+          <%= link_to cart_path do %><%= icon("cart") %> Cart<% end %>
           <% if authenticated? %>
-            <%= link_to "Admin", admin_dashboard_path %>
-            <%= button_to "Logout", session_path, method: :delete, class: "btn btn-sm", form_class: "inline-form" %>
+            <%= link_to admin_dashboard_path do %><%= icon("layout-dashboard") %> Admin<% end %>
+            <%= button_to session_path, method: :delete, class: "btn btn-sm", form_class: "inline-form" do %><%= icon("logout") %> Logout<% end %>
           <% else %>
-            <%= link_to "Login", new_session_path %>
+            <%= link_to new_session_path do %><%= icon("user") %> Login<% end %>
           <% end %>
         </nav>
       </div>
     </header>
 
     <% if notice %>
-      <div class="main-content" style="padding-bottom:0"><div class="flash flash-notice"><%= notice %></div></div>
+      <div class="main-content" style="padding-bottom:0"><div class="flash flash-notice"><%= icon("check-circle") %><%= notice %></div></div>
     <% end %>
     <% if alert %>
-      <div class="main-content" style="padding-bottom:0"><div class="flash flash-alert"><%= alert %></div></div>
+      <div class="main-content" style="padding-bottom:0"><div class="flash flash-alert"><%= icon("alert-triangle") %><%= alert %></div></div>
     <% end %>
 
     <main class="main-content">

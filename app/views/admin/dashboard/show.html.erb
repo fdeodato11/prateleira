@@ -1,29 +1,35 @@
 <div class="admin-header">
-  <h1>Dashboard</h1>
+  <h1><%= icon("dashboard", size: 28) %> Dashboard</h1>
 </div>
 
 <div class="dashboard-stats">
   <div class="stat-card">
+    <%= icon("package", size: 24) %>
     <h3><%= @total_products %></h3>
     <p>Total Products</p>
   </div>
   <div class="stat-card">
+    <%= icon("check-circle", size: 24) %>
     <h3><%= @active_products %></h3>
     <p>Active</p>
   </div>
   <div class="stat-card">
+    <%= icon("edit", size: 24) %>
     <h3><%= @draft_products %></h3>
     <p>Drafts</p>
   </div>
   <div class="stat-card">
+    <%= icon("trash", size: 24) %>
     <h3><%= @discarded_products %></h3>
     <p>Deleted</p>
   </div>
   <div class="stat-card">
+    <%= icon("category", size: 24) %>
     <h3><%= @total_categories %></h3>
     <p>Categories</p>
   </div>
   <div class="stat-card">
+    <%= icon("users", size: 24) %>
     <h3><%= @total_users %></h3>
     <p>Users</p>
   </div>
@@ -42,10 +48,10 @@
 
 <h2>Quick Actions</h2>
 <div class="quick-actions">
-  <%= link_to "New Product", new_admin_product_path, class: "btn btn-primary" %>
-  <%= link_to "New Category", new_admin_category_path, class: "btn btn-primary" %>
-  <%= link_to "Manage Products", admin_products_path, class: "btn" %>
-  <%= link_to "Manage Categories", admin_categories_path, class: "btn" %>
+  <%= link_to new_admin_product_path, class: "btn btn-primary" do %><%= icon("plus") %> New Product<% end %>
+  <%= link_to new_admin_category_path, class: "btn btn-primary" do %><%= icon("plus") %> New Category<% end %>
+  <%= link_to admin_products_path, class: "btn" do %><%= icon("package") %> Manage Products<% end %>
+  <%= link_to admin_categories_path, class: "btn" do %><%= icon("category") %> Manage Categories<% end %>
 </div>
 
 <h2>Recent Products</h2>
@@ -69,7 +75,7 @@
 </div>
 
 <% if @low_stock_products.any? %>
-  <h2>Low Stock Alert</h2>
+  <h2><%= icon("alert-triangle") %> Low Stock Alert</h2>
   <div class="table-container">
     <table>
       <thead>
@@ -84,7 +90,7 @@
           <tr>
             <td><%= link_to product.name, admin_product_path(product) %></td>
             <td><%= product.stock_quantity %> units</td>
-            <td><%= link_to "Edit", edit_admin_product_path(product), class: "btn btn-sm" %></td>
+            <td><%= link_to edit_admin_product_path(product), class: "btn btn-sm" do %><%= icon("edit") %> Edit<% end %></td>
           </tr>
         <% end %>
       </tbody>
