@@ -8,26 +8,26 @@
   <div class="detail-body">
     <div class="detail-grid">
       <div class="detail-field">
-        <dt>Slug</dt>
+        <dt><%= t("labels.slug") %></dt>
         <dd><%= @category.slug %></dd>
       </div>
       <div class="detail-field">
-        <dt>Description</dt>
+        <dt><%= t("labels.description") %></dt>
         <dd><%= @category.description %></dd>
       </div>
       <div class="detail-field">
-        <dt>Products</dt>
+        <dt><%= t("labels.products") %></dt>
         <dd><%= @category.products.kept.count %></dd>
       </div>
     </div>
   </div>
 
   <div class="detail-actions">
-    <%= link_to edit_admin_category_path(@category), class: "btn btn-primary" do %><%= icon("edit") %> Edit<% end %>
+    <%= link_to edit_admin_category_path(@category), class: "btn btn-primary" do %><%= icon("edit") %> <%= t("labels.edit") %><% end %>
     <% if @category.discarded? %>
-      <%= button_to restore_admin_category_path(@category), method: :post, class: "btn" do %><%= icon("refresh") %> Restore<% end %>
+      <%= button_to restore_admin_category_path(@category), method: :post, class: "btn" do %><%= icon("refresh") %> <%= t("labels.restore") %><% end %>
     <% else %>
-      <%= button_to admin_category_path(@category), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" do %><%= icon("trash") %> Delete<% end %>
+      <%= button_to admin_category_path(@category), method: :delete, data: { confirm: t("labels.are_you_sure") }, class: "btn btn-danger" do %><%= icon("trash") %> <%= t("labels.delete") %><% end %>
     <% end %>
   </div>
 </div>

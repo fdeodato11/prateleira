@@ -1,16 +1,16 @@
 <div class="admin-header">
-  <h1><%= icon("package", size: 28) %> Products</h1>
+  <h1><%= icon("package", size: 28) %> <%= t("labels.products") %></h1>
   <div class="admin-actions">
-    <%= link_to new_admin_product_path, class: "btn btn-primary" do %><%= icon("plus") %> New Product<% end %>
+    <%= link_to new_admin_product_path, class: "btn btn-primary" do %><%= icon("plus") %> <%= t("labels.new_product") %><% end %>
   </div>
 </div>
 
 <%= form_tag admin_products_path, method: :get, class: "search-bar" do %>
   <%= icon("search") %>
-  <%= search_field_tag :query, params[:query], placeholder: "Search..." %>
-  <%= select_tag :category_id, options_from_collection_for_select(Category.kept.ordered, :id, :name, params[:category_id]), include_blank: "All Categories" %>
-  <%= select_tag :status, options_for_select(Product.statuses.keys.map { |s| [s.humanize, s] }, params[:status]), include_blank: "All Statuses" %>
-  <%= button_tag class: "btn btn-primary" do %><%= icon("filter") %> Filter<% end %>
+  <%= search_field_tag :query, params[:query], placeholder: t("labels.search") %>
+  <%= select_tag :category_id, options_from_collection_for_select(Category.kept.ordered, :id, :name, params[:category_id]), include_blank: t("labels.all_categories") %>
+  <%= select_tag :status, options_for_select(Product.statuses.keys.map { |s| [s.humanize, s] }, params[:status]), include_blank: t("labels.all_statuses") %>
+  <%= button_tag class: "btn btn-primary" do %><%= icon("filter") %> <%= t("labels.filter") %><% end %>
 <% end %>
 
 <% if @products.any? %>
@@ -18,13 +18,13 @@
     <table>
       <thead>
         <tr>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Price</th>
-          <th>Stock</th>
-          <th>Status</th>
-          <th>Actions</th>
+          <th><%= t("labels.image") %></th>
+          <th><%= t("labels.name") %></th>
+          <th><%= t("labels.category") %></th>
+          <th><%= t("labels.price") %></th>
+          <th><%= t("labels.stock") %></th>
+          <th><%= t("labels.status") %></th>
+          <th><%= t("labels.actions") %></th>
         </tr>
       </thead>
       <tbody>
@@ -42,11 +42,11 @@
             <td><span class="status-badge status-<%= product.status %>"><%= product.status.humanize %></span></td>
             <td>
               <div class="btn-group">
-                <%= link_to edit_admin_product_path(product), class: "btn btn-sm" do %><%= icon("edit") %> Edit<% end %>
+                <%= link_to edit_admin_product_path(product), class: "btn btn-sm" do %><%= icon("edit") %> <%= t("labels.edit") %><% end %>
                 <% if product.discarded? %>
-                  <%= button_to restore_admin_product_path(product), method: :post, class: "btn btn-sm" do %><%= icon("refresh") %> Restore<% end %>
+                  <%= button_to restore_admin_product_path(product), method: :post, class: "btn btn-sm" do %><%= icon("refresh") %> <%= t("labels.restore") %><% end %>
                 <% else %>
-                  <%= button_to admin_product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" do %><%= icon("trash") %> Delete<% end %>
+                  <%= button_to admin_product_path(product), method: :delete, data: { confirm: t("labels.are_you_sure") }, class: "btn btn-sm btn-danger" do %><%= icon("trash") %> <%= t("labels.delete") %><% end %>
                 <% end %>
               </div>
             </td>
@@ -59,6 +59,6 @@
 <% else %>
     <div class="empty-state">
       <%= icon("package", css_class: "icon-lg", size: 48) %>
-      <p>No products found.</p>
+      <p><%= t("labels.no_products_found") %></p>
     </div>
 <% end %>

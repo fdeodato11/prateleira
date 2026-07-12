@@ -14,11 +14,11 @@
       <aside class="admin-sidebar">
         <%= link_to "Prateleira Virtual", root_path, class: "sidebar-logo" %>
         <nav>
-          <%= link_to admin_dashboard_path do %><%= icon("dashboard") %> Dashboard<% end %>
-          <%= link_to admin_products_path do %><%= icon("package") %> Products<% end %>
-          <%= link_to admin_categories_path do %><%= icon("category") %> Categories<% end %>
-          <%= link_to admin_users_path do %><%= icon("users") %> Users<% end %>
-          <%= button_to session_path, method: :delete, class: "btn btn-sm", form_class: "inline-form" do %><%= icon("logout") %> Logout<% end %>
+          <%= link_to admin_dashboard_path do %><%= icon("dashboard") %> <%= t("labels.dashboard") %><% end %>
+          <%= link_to admin_products_path do %><%= icon("package") %> <%= t("labels.products") %><% end %>
+          <%= link_to admin_categories_path do %><%= icon("category") %> <%= t("labels.categories") %><% end %>
+          <%= link_to admin_users_path do %><%= icon("users") %> <%= t("labels.users") %><% end %>
+          <%= button_to session_path, method: :delete, class: "btn btn-sm", form_class: "inline-form" do %><%= icon("logout") %> <%= t("labels.logout") %><% end %>
         </nav>
       </aside>
 

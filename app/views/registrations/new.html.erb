@@ -1,11 +1,11 @@
 <div class="auth-page">
   <div class="auth-card">
-    <h1><%= icon("user", size: 28) %> Create Account</h1>
+    <h1><%= icon("user", size: 28) %> <%= t("labels.create_account") %></h1>
     <div class="form-card">
       <%= form_with model: @user, url: registration_path do |form| %>
         <% if @user.errors.any? %>
           <div class="form-errors">
-            <h2><%= pluralize @user.errors.count, "error" %> prohibited this account from being created:</h2>
+            <h2><%= pluralize @user.errors.count, t("labels.error") %> <%= t("labels.prohibited_account_creation") %>:</h2>
             <ul>
               <% @user.errors.each do |error| %>
                 <li><%= error.full_message %></li>
@@ -33,12 +33,12 @@
         </div>
 
         <div class="form-actions">
-          <%= form.button class: "btn btn-primary", style: "width:100%" do %><%= icon("user") %> Create Account<% end %>
+          <%= form.button class: "btn btn-primary", style: "width:100%" do %><%= icon("user") %> <%= t("labels.create_account") %><% end %>
         </div>
       <% end %>
 
       <div class="auth-links">
-        <%= link_to new_session_path do %><%= icon("arrow-left") %> Already have an account? Sign in<% end %>
+        <%= link_to new_session_path do %><%= icon("arrow-left") %> <%= t("labels.already_have_account_sign_in") %><% end %>
       </div>
     </div>
   </div>

@@ -13,32 +13,32 @@
 
       <div class="product-meta">
         <div class="product-meta-item">
-          <dt><%= icon("tag") %> Price</dt>
+          <dt><%= icon("tag") %> <%= t("labels.price") %></dt>
           <dd><%= number_to_currency @product.price %></dd>
         </div>
         <div class="product-meta-item">
-          <dt><%= icon("package") %> Stock</dt>
-          <dd><%= @product.stock_quantity %> units</dd>
+          <dt><%= icon("package") %> <%= t("labels.stock") %></dt>
+          <dd><%= @product.stock_quantity %> <%= t("labels.units") %></dd>
         </div>
         <div class="product-meta-item">
-          <dt><%= icon("category") %> Category</dt>
+          <dt><%= icon("category") %> <%= t("labels.category") %></dt>
           <dd><%= @product.category.name %></dd>
         </div>
         <div class="product-meta-item">
-          <dt>SKU</dt>
+          <dt><%= t("labels.sku") %></dt>
           <dd><%= @product.sku %></dd>
         </div>
       </div>
 
       <% if @product.description.present? %>
         <div class="product-description">
-          <h2>Description</h2>
+          <h2><%= t("labels.description") %></h2>
           <p><%= @product.description %></p>
         </div>
       <% end %>
 
       <div class="product-actions">
-        <%= button_to add_item_cart_path(product_id: @product.id), class: "btn btn-primary" do %><%= icon("shopping-cart") %> Add to Cart<% end %>
+        <%= button_to add_item_cart_path(product_id: @product.id), class: "btn btn-primary" do %><%= icon("shopping-cart") %> <%= t("labels.add_to_cart") %><% end %>
       </div>
     </div>
   </div>

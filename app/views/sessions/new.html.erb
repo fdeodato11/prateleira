@@ -1,6 +1,6 @@
 <div class="auth-page">
   <div class="auth-card">
-    <h1><%= icon("user", size: 28) %> Sign In</h1>
+    <h1><%= icon("user", size: 28) %> <%= t("labels.sign_in") %></h1>
     <div class="form-card">
       <%= form_with url: session_path do |form| %>
         <div class="form-group">
@@ -14,13 +14,13 @@
         </div>
 
         <div class="form-actions">
-          <%= form.button class: "btn btn-primary", style: "width:100%" do %><%= icon("user") %> Sign In<% end %>
+          <%= form.button class: "btn btn-primary", style: "width:100%" do %><%= icon("user") %> <%= t("labels.sign_in") %><% end %>
         </div>
       <% end %>
 
       <div class="auth-links">
-        <%= link_to new_password_path do %><%= icon("arrow-left") %> Forgot your password?<% end %><br>
-        <%= link_to new_registration_path do %><%= icon("user") %> Don't have an account? Sign up<% end %>
+        <%= link_to new_password_path do %><%= icon("arrow-left") %> <%= t("labels.forgot_password") %><% end %><br>
+        <%= link_to new_registration_path do %><%= icon("user") %> <%= t("labels.dont_have_account_sign_up") %><% end %>
       </div>
     </div>
   </div>

@@ -8,15 +8,15 @@
   <div class="detail-body">
     <div class="detail-grid">
       <div class="detail-field">
-        <dt>Email</dt>
+        <dt><%= t("labels.email") %></dt>
         <dd><%= @user.email_address %></dd>
       </div>
       <div class="detail-field">
-        <dt>Admin</dt>
-        <dd><span class="status-badge <%= @user.administrator? ? "status-active" : "status-draft" %>"><%= @user.administrator? ? "Yes" : "No" %></span></dd>
+        <dt><%= t("labels.admin") %></dt>
+        <dd><span class="status-badge <%= @user.administrator? ? "status-active" : "status-draft" %>"><%= @user.administrator? ? t("labels.yes") : t("labels.no") %></span></dd>
       </div>
       <div class="detail-field">
-        <dt>Created</dt>
+        <dt><%= t("labels.created") %></dt>
         <dd><%= l @user.created_at, format: :long %></dd>
       </div>
     </div>

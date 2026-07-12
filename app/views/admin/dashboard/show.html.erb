@@ -1,66 +1,66 @@
 <div class="admin-header">
-  <h1><%= icon("dashboard", size: 28) %> Dashboard</h1>
+  <h1><%= icon("dashboard", size: 28) %> <%= t("labels.dashboard") %></h1>
 </div>
 
 <div class="dashboard-stats">
   <div class="stat-card">
     <%= icon("package", size: 24) %>
     <h3><%= @total_products %></h3>
-    <p>Total Products</p>
+    <p><%= t("labels.total_products") %></p>
   </div>
   <div class="stat-card">
     <%= icon("check-circle", size: 24) %>
     <h3><%= @active_products %></h3>
-    <p>Active</p>
+    <p><%= t("labels.active") %></p>
   </div>
   <div class="stat-card">
     <%= icon("edit", size: 24) %>
     <h3><%= @draft_products %></h3>
-    <p>Drafts</p>
+    <p><%= t("labels.draft") %></p>
   </div>
   <div class="stat-card">
     <%= icon("trash", size: 24) %>
     <h3><%= @discarded_products %></h3>
-    <p>Deleted</p>
+    <p><%= t("labels.deleted") %></p>
   </div>
   <div class="stat-card">
     <%= icon("category", size: 24) %>
     <h3><%= @total_categories %></h3>
-    <p>Categories</p>
+    <p><%= t("labels.categories") %></p>
   </div>
   <div class="stat-card">
     <%= icon("users", size: 24) %>
     <h3><%= @total_users %></h3>
-    <p>Users</p>
+    <p><%= t("labels.users") %></p>
   </div>
 </div>
 
 <div class="dashboard-charts">
   <div class="chart-card">
-    <h2>Products by Category</h2>
+    <h2><%= t("labels.products_by_category") %></h2>
     <%= column_chart @products_by_category, height: "250px", colors: ["#2563eb"] %>
   </div>
   <div class="chart-card">
-    <h2>Products by Status</h2>
+    <h2><%= t("labels.products_by_status") %></h2>
     <%= pie_chart @products_by_status, height: "250px", colors: ["#10b981", "#f59e0b", "#ef4444", "#6b7280"] %>
   </div>
 </div>
 
-<h2>Quick Actions</h2>
+<h2><%= t("labels.quick_actions") %></h2>
 <div class="quick-actions">
-  <%= link_to new_admin_product_path, class: "btn btn-primary" do %><%= icon("plus") %> New Product<% end %>
-  <%= link_to new_admin_category_path, class: "btn btn-primary" do %><%= icon("plus") %> New Category<% end %>
-  <%= link_to admin_products_path, class: "btn" do %><%= icon("package") %> Manage Products<% end %>
-  <%= link_to admin_categories_path, class: "btn" do %><%= icon("category") %> Manage Categories<% end %>
+  <%= link_to new_admin_product_path, class: "btn btn-primary" do %><%= icon("plus") %> <%= t("labels.new_product") %><% end %>
+  <%= link_to new_admin_category_path, class: "btn btn-primary" do %><%= icon("plus") %> <%= t("labels.new_category") %><% end %>
+  <%= link_to admin_products_path, class: "btn" do %><%= icon("package") %> <%= t("labels.manage_products") %><% end %>
+  <%= link_to admin_categories_path, class: "btn" do %><%= icon("category") %> <%= t("labels.manage_categories") %><% end %>
 </div>
 
-<h2>Recent Products</h2>
+<h2><%= t("labels.recent_products") %></h2>
 <div class="table-container">
   <table>
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Price</th>
+        <th><%= t("labels.name") %></th>
+        <th><%= t("labels.price") %></th>
       </tr>
     </thead>
     <tbody>
@@ -75,13 +75,13 @@
 </div>
 
 <% if @low_stock_products.any? %>
-  <h2><%= icon("alert-triangle") %> Low Stock Alert</h2>
+  <h2><%= icon("alert-triangle") %> <%= t("labels.low_stock_alert") %></h2>
   <div class="table-container">
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Stock</th>
+          <th><%= t("labels.name") %></th>
+          <th><%= t("labels.stock") %></th>
           <th></th>
         </tr>
       </thead>
@@ -89,8 +89,8 @@
         <% @low_stock_products.each do |product| %>
           <tr>
             <td><%= link_to product.name, admin_product_path(product) %></td>
-            <td><%= product.stock_quantity %> units</td>
-            <td><%= link_to edit_admin_product_path(product), class: "btn btn-sm" do %><%= icon("edit") %> Edit<% end %></td>
+            <td><%= product.stock_quantity %> <%= t("labels.units") %></td>
+            <td><%= link_to edit_admin_product_path(product), class: "btn btn-sm" do %><%= icon("edit") %> <%= t("labels.edit") %><% end %></td>
           </tr>
         <% end %>
       </tbody>

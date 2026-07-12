@@ -1,21 +1,21 @@
-<h1>Products</h1>
+<h1><%= t("labels.products") %></h1>
 
 <%= form_tag products_path, method: :get, data: { turbo_frame: "products", turbo_action: "advance" }, class: "search-bar" do %>
   <%= icon("search") %>
-  <%= search_field_tag :query, params[:query], placeholder: "Search products..." %>
-  <%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :name, params[:category_id]), include_blank: "All Categories" %>
-  <%= number_field_tag :price_min, params[:price_min], placeholder: "Min price", step: 0.01 %>
-  <%= number_field_tag :price_max, params[:price_max], placeholder: "Max price", step: 0.01 %>
+  <%= search_field_tag :query, params[:query], placeholder: t("labels.search_products") %>
+  <%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :name, params[:category_id]), include_blank: t("labels.all_categories") %>
+  <%= number_field_tag :price_min, params[:price_min], placeholder: t("labels.min_price"), step: 0.01 %>
+  <%= number_field_tag :price_max, params[:price_max], placeholder: t("labels.max_price"), step: 0.01 %>
   <%= icon("sort-desc") %>
   <%= select_tag :sort, options_for_select([
-    ["Newest", "newest"],
-    ["Oldest", "oldest"],
-    ["Price: Low to High", "price_asc"],
-    ["Price: High to Low", "price_desc"],
-    ["Name: A-Z", "name_asc"],
-    ["Name: Z-A", "name_desc"]
-  ], params[:sort]), include_blank: "Sort by" %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
+    [t("labels.newest"), "newest"],
+    [t("labels.oldest"), "oldest"],
+    [t("labels.price_low_to_high"), "price_asc"],
+    [t("labels.price_high_to_low"), "price_desc"],
+    [t("labels.name_az"), "name_asc"],
+    [t("labels.name_za"), "name_desc"]
+  ], params[:sort]), include_blank: t("labels.sort_by") %>
+  <%= submit_tag t("labels.search"), class: "btn btn-primary" %>
 <% end %>
 
 <%= turbo_frame_tag "products" do %>
@@ -32,7 +32,7 @@
             <p class="product-category"><%= product.category.name %></p>
             <h3><%= link_to product.name, product %></h3>
             <p class="product-price"><%= number_to_currency product.price %></p>
-            <p class="product-stock"><%= product.stock_quantity %> in stock</p>
+            <p class="product-stock"><%= product.stock_quantity %> <%= t("labels.in_stock") %></p>
           </div>
         </div>
       <% end %>
@@ -41,8 +41,8 @@
   <% else %>
     <div class="empty-state">
       <%= icon("search", css_class: "icon-lg", size: 48) %>
-      <p>No products found matching your criteria.</p>
-      <%= link_to "Clear filters", products_path, class: "btn" %>
+      <p><%= t("labels.no_products_found_criteria") %></p>
+      <%= link_to t("labels.clear_filters"), products_path, class: "btn" %>
     </div>
   <% end %>
 <% end %>

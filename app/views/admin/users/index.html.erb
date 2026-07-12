@@ -1,5 +1,5 @@
 <div class="admin-header">
-  <h1><%= icon("users", size: 28) %> Users</h1>
+  <h1><%= icon("users", size: 28) %> <%= t("labels.users") %></h1>
   <div class="admin-actions">
     <%= link_to admin_dashboard_path, class: "btn" do %><%= icon("dashboard") %> Back to Dashboard<% end %>
   </div>
@@ -10,23 +10,23 @@
     <table>
       <thead>
         <tr>
-          <th>Email</th>
-          <th>Admin</th>
-          <th>Created</th>
-          <th>Actions</th>
+          <th><%= t("labels.email") %></th>
+          <th><%= t("labels.admin") %></th>
+          <th><%= t("labels.created") %></th>
+          <th><%= t("labels.actions") %></th>
         </tr>
       </thead>
       <tbody>
         <% @users.each do |user| %>
           <tr>
             <td><%= user.email_address %></td>
-            <td><span class="status-badge <%= user.administrator? ? "status-active" : "status-draft" %>"><%= user.administrator? ? "Yes" : "No" %></span></td>
+            <td><span class="status-badge <%= user.administrator? ? "status-active" : "status-draft" %>"><%= user.administrator? ? t("labels.yes") : t("labels.no") %></span></td>
             <td><%= l user.created_at, format: :short %></td>
             <td>
               <div class="btn-group">
-                <%= link_to admin_user_path(user), class: "btn btn-sm" do %><%= icon("user") %> Show<% end %>
+                <%= link_to admin_user_path(user), class: "btn btn-sm" do %><%= icon("user") %> <%= t("labels.show") %><% end %>
                 <% if user != current_user %>
-                  <%= link_to edit_admin_user_path(user), class: "btn btn-sm" do %><%= icon("edit") %> Edit<% end %>
+                  <%= link_to edit_admin_user_path(user), class: "btn btn-sm" do %><%= icon("edit") %> <%= t("labels.edit") %><% end %>
                 <% end %>
               </div>
             </td>
@@ -38,6 +38,6 @@
 <% else %>
     <div class="empty-state">
       <%= icon("users", css_class: "icon-lg", size: 48) %>
-      <p>No users found.</p>
+      <p><%= t("labels.no_users_found") %></p>
     </div>
 <% end %>

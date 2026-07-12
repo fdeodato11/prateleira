@@ -1,5 +1,5 @@
 <div class="admin-header">
-  <h1>Edit User: <%= @user.email_address %></h1>
+  <h1><%= t("labels.edit_user") %>: <%= @user.email_address %></h1>
   <div class="admin-actions">
     <%= link_to admin_users_path, class: "btn" do %><%= icon("arrow-left") %> Back<% end %>
   </div>
@@ -10,13 +10,13 @@
     <div class="form-group">
       <label class="checkbox-label">
         <%= form.check_box :admin %>
-        Admin
+        <%= t("labels.admin") %>
       </label>
     </div>
 
     <div class="form-actions">
-      <%= form.button class: "btn btn-primary" do %><%= icon("check") %> Update<% end %>
-      <%= link_to admin_users_path, class: "btn" do %><%= icon("x") %> Cancel<% end %>
+      <%= form.button class: "btn btn-primary" do %><%= icon("check") %> <%= t("labels.update") %><% end %>
+      <%= link_to admin_users_path, class: "btn" do %><%= icon("x") %> <%= t("labels.cancel") %><% end %>
     </div>
   <% end %>
 </div>

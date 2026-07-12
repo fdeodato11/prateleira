@@ -1,7 +1,7 @@
 <%= form_with model: [:admin, @category], class: "form-card" do |form| %>
   <% if @category.errors.any? %>
     <div class="form-errors">
-      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+      <h2><%= pluralize(@category.errors.count, t("labels.error")) %> <%= t("labels.prohibited_from_being_saved") %>:</h2>
       <ul>
         <% @category.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -29,7 +29,7 @@
   </div>
 
   <div class="form-actions">
-    <%= form.button class: "btn btn-primary" do %><%= icon("check") %> <%= @category.new_record? ? "Create Category" : "Update Category" %><% end %>
-    <%= link_to admin_categories_path, class: "btn" do %><%= icon("x") %> Cancel<% end %>
+    <%= form.button class: "btn btn-primary" do %><%= icon("check") %> <%= @category.new_record? ? t("labels.create_category") : t("labels.update_category") %><% end %>
+    <%= link_to admin_categories_path, class: "btn" do %><%= icon("x") %> <%= t("labels.cancel") %><% end %>
   </div>
 <% end %>

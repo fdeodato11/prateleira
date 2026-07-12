@@ -15,13 +15,13 @@
       <div class="header-inner">
         <%= link_to "Prateleira Virtual", root_path, class: "logo" %>
         <nav>
-          <%= link_to products_path do %><%= icon("package") %> Products<% end %>
-          <%= link_to cart_path do %><%= icon("cart") %> Cart<% end %>
+          <%= link_to products_path do %><%= icon("package") %> <%= t("labels.products") %><% end %>
+          <%= link_to cart_path do %><%= icon("cart") %> <%= t("labels.cart") %><% end %>
           <% if authenticated? %>
-            <%= link_to admin_dashboard_path do %><%= icon("layout-dashboard") %> Admin<% end %>
-            <%= button_to session_path, method: :delete, class: "btn btn-sm", form_class: "inline-form" do %><%= icon("logout") %> Logout<% end %>
+            <%= link_to admin_dashboard_path do %><%= icon("layout-dashboard") %> <%= t("labels.admin") %><% end %>
+            <%= button_to session_path, method: :delete, class: "btn btn-sm", form_class: "inline-form" do %><%= icon("logout") %> <%= t("labels.logout") %><% end %>
           <% else %>
-            <%= link_to new_session_path do %><%= icon("user") %> Login<% end %>
+            <%= link_to new_session_path do %><%= icon("user") %> <%= t("labels.login") %><% end %>
           <% end %>
         </nav>
       </div>

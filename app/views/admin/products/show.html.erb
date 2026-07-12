@@ -8,66 +8,66 @@
   <div class="detail-body">
     <div class="detail-grid">
       <div class="detail-field">
-        <dt>Category</dt>
+        <dt><%= t("labels.category") %></dt>
         <dd><%= @product.category.name %></dd>
       </div>
       <div class="detail-field">
-        <dt>Price</dt>
+        <dt><%= t("labels.price") %></dt>
         <dd><%= number_to_currency @product.price %></dd>
       </div>
       <div class="detail-field">
-        <dt>Stock</dt>
-        <dd><%= @product.stock_quantity %> units</dd>
+        <dt><%= t("labels.stock") %></dt>
+        <dd><%= @product.stock_quantity %> <%= t("labels.units") %></dd>
       </div>
       <div class="detail-field">
-        <dt>SKU</dt>
+        <dt><%= t("labels.sku") %></dt>
         <dd><%= @product.sku %></dd>
       </div>
       <div class="detail-field">
-        <dt>Status</dt>
+        <dt><%= t("labels.status") %></dt>
         <dd><span class="status-badge status-<%= @product.status %>"><%= @product.status.humanize %></span></dd>
       </div>
       <div class="detail-field">
-        <dt>Featured</dt>
-        <dd><%= @product.featured? ? "Yes" : "No" %></dd>
+        <dt><%= t("labels.featured") %></dt>
+        <dd><%= @product.featured? ? t("labels.yes") : t("labels.no") %></dd>
       </div>
       <div class="detail-field">
-        <dt>Weight</dt>
+        <dt><%= t("labels.weight") %></dt>
         <dd><%= @product.weight %> g</dd>
       </div>
       <div class="detail-field">
-        <dt>Created</dt>
+        <dt><%= t("labels.created") %></dt>
         <dd><%= l @product.created_at, format: :long %></dd>
       </div>
       <div class="detail-field">
-        <dt>Updated</dt>
+        <dt><%= t("labels.updated") %></dt>
         <dd><%= l @product.updated_at, format: :long %></dd>
       </div>
       <% if @product.discarded? %>
         <div class="detail-field">
-          <dt>Discarded at</dt>
+          <dt><%= t("labels.discarded_at") %></dt>
           <dd><%= l @product.discarded_at, format: :long %></dd>
         </div>
       <% end %>
     </div>
 
     <% if @product.description.present? %>
-      <h2>Description</h2>
+      <h2><%= t("labels.description") %></h2>
       <p><%= @product.description %></p>
     <% end %>
 
     <% if @product.image.attached? %>
-      <h2>Image</h2>
+      <h2><%= t("labels.image") %></h2>
       <%= image_tag @product.image.variant(resize_to_limit: [400, 400]) if @product.image.variable?, class: "detail-image" %>
     <% end %>
   </div>
 
   <div class="detail-actions">
-    <%= link_to edit_admin_product_path(@product), class: "btn btn-primary" do %><%= icon("edit") %> Edit<% end %>
+    <%= link_to edit_admin_product_path(@product), class: "btn btn-primary" do %><%= icon("edit") %> <%= t("labels.edit") %><% end %>
     <% if @product.discarded? %>
-      <%= button_to restore_admin_product_path(@product), method: :post, class: "btn" do %><%= icon("refresh") %> Restore<% end %>
+      <%= button_to restore_admin_product_path(@product), method: :post, class: "btn" do %><%= icon("refresh") %> <%= t("labels.restore") %><% end %>
     <% else %>
-      <%= button_to admin_product_path(@product), method: :delete, data: { confirm: "Are you sure you want to delete this product?" }, class: "btn btn-danger" do %><%= icon("trash") %> Delete<% end %>
+      <%= button_to admin_product_path(@product), method: :delete, data: { confirm: t("labels.are_you_sure") }, class: "btn btn-danger" do %><%= icon("trash") %> <%= t("labels.delete") %><% end %>
     <% end %>
   </div>
 </div>

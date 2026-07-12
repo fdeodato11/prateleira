@@ -1,7 +1,7 @@
 <%= form_with model: [:admin, product], local: true, class: "form-card-wide" do |f| %>
   <% if product.errors.any? %>
     <div class="form-errors">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <h2><%= pluralize(product.errors.count, t("labels.error")) %> <%= t("labels.prohibited_from_being_saved") %>:</h2>
       <ul>
         <% product.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -25,7 +25,7 @@
 
   <div class="form-group<%= " invalid" if product.errors[:category].any? %>">
     <%= f.label :category_id %>
-    <%= f.collection_select :category_id, Category.kept.ordered, :id, :name, prompt: "Select Category" %>
+    <%= f.collection_select :category_id, Category.kept.ordered, :id, :name, prompt: t("labels.select_category") %>
     <% if product.errors[:category_id].any? %>
       <p class="field-error"><%= product.errors[:category_id].join(", ") %></p>
     <% end %>
@@ -63,7 +63,7 @@
   <div class="form-group">
     <label class="checkbox-label">
       <%= f.check_box :featured %>
-      Featured
+      <%= t("labels.featured") %>
     </label>
   </div>
 
@@ -77,13 +77,13 @@
     <%= f.file_field :image, accept: "image/jpeg,image/png,image/webp" %>
     <% if product.image.attached? && product.image.variable? %>
       <p style="margin-top:var(--space-sm);font-size:0.85rem;color:var(--color-text-secondary)">
-        Current image: <%= image_tag product.image.variant(resize_to_limit: [100, 100]), class: "thumbnail", style: "vertical-align:middle;margin-left:var(--space-sm)" %>
+        <%= t("labels.current_image") %>: <%= image_tag product.image.variant(resize_to_limit: [100, 100]), class: "thumbnail", style: "vertical-align:middle;margin-left:var(--space-sm)" %>
       </p>
     <% end %>
   </div>
 
   <div class="form-actions">
-    <%= f.button class: "btn btn-primary" do %><%= icon("check") %> <%= product.new_record? ? "Create Product" : "Update Product" %><% end %>
-    <%= link_to admin_products_path, class: "btn" do %><%= icon("x") %> Cancel<% end %>
+    <%= f.button class: "btn btn-primary" do %><%= icon("check") %> <%= product.new_record? ? t("labels.create_product") : t("labels.update_product") %><% end %>
+    <%= link_to admin_products_path, class: "btn" do %><%= icon("x") %> <%= t("labels.cancel") %><% end %>
   </div>
 <% end %>
