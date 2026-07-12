@@ -255,6 +255,39 @@
           null
         ]
       },
+      "/home/felipe/projetos/prateleira/prateleira/app/controllers/carts_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          5,
+          4,
+          4,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          7,
+          7,
+          null,
+          null
+        ]
+      },
       "/home/felipe/projetos/prateleira/prateleira/app/controllers/concerns/authentication.rb": {
         "lines": [
           1,
@@ -267,13 +300,13 @@
           null,
           1,
           1,
-          3,
+          4,
           null,
           null,
           null,
           1,
           1,
-          9,
+          10,
           null,
           null,
           1,
@@ -281,11 +314,11 @@
           null,
           null,
           1,
-          39,
+          40,
           null,
           null,
           1,
-          39,
+          40,
           null,
           null,
           1,
@@ -517,6 +550,39 @@
           null
         ]
       },
+      "/home/felipe/projetos/prateleira/prateleira/app/models/cart.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          3,
+          null,
+          null,
+          1,
+          10,
+          10,
+          10,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/home/felipe/projetos/prateleira/prateleira/app/models/cart_item.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          null
+        ]
+      },
       "/home/felipe/projetos/prateleira/prateleira/app/models/category.rb": {
         "lines": [
           1,
@@ -527,8 +593,8 @@
           1,
           1,
           null,
-          184,
-          180,
+          200,
+          196,
           null,
           15,
           null
@@ -567,7 +633,7 @@
           1,
           null,
           1,
-          68,
+          76,
           null,
           0,
           0,
@@ -578,8 +644,8 @@
           null,
           null,
           null,
-          82,
-          145,
+          90,
+          161,
           null,
           12,
           10,
@@ -804,6 +870,6 @@
         ]
       }
     },
-    "timestamp": 1783881389
+    "timestamp": 1783881630
   }
 }

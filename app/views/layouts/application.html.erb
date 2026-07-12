@@ -16,6 +16,7 @@
         <%= link_to "Prateleira Virtual", root_path %>
         <div>
           <%= link_to "Products", products_path %>
+          <%= link_to "Cart", cart_path %>
           <% if authenticated? %>
             <%= link_to "Admin", admin_dashboard_path %>
             <%= button_to "Logout", session_path, method: :delete %>

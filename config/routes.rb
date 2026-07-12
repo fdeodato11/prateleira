@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
   resource :registration, only: %i[new create]
+  resource :cart, only: :show do
+    post :add_item
+    delete :remove_item
+  end
 
   # Public routes
   resources :products, only: %i[index show]
