@@ -1,0 +1,12 @@
+<h1>User: <%= @user.email_address %></h1>
+
+<dl>
+  <dt>Email</dt>
+  <dd><%= @user.email_address %></dd>
+  <dt>Admin</dt>
+  <dd><%= @user.administrator? ? "Yes" : "No" %></dd>
+  <dt>Created</dt>
+  <dd><%= l @user.created_at, format: :long %></dd>
+</dl>
+
+<%= link_to "Back to Users", admin_users_path %>

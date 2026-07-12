@@ -1,0 +1,12 @@
+<h1>Edit User: <%= @user.email_address %></h1>
+
+<%= form_with model: [:admin, @user] do |form| %>
+  <div>
+    <%= form.label :admin %>
+    <%= form.check_box :admin %>
+  </div>
+
+  <%= form.submit "Update" %>
+<% end %>
+
+<%= link_to "Back", admin_users_path %>
