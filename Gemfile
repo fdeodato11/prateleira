@@ -82,3 +82,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# CORS
+gem "rack-cors"

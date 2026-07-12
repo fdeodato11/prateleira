@@ -1,4 +1,5 @@
 require "faker"
+require "open-uri"
 
 puts "Creating admin user..."
 User.create!(
