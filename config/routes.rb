@@ -13,6 +13,11 @@ Rails.application.routes.draw do
         post :restore
       end
     end
+    resources :categories do
+      member do
+        post :restore
+      end
+    end
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

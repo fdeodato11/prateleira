@@ -1,0 +1,8 @@
+<h1><%= @category.name %></h1>
+
+<p><strong>Slug:</strong> <%= @category.slug %></p>
+<p><strong>Description:</strong> <%= @category.description %></p>
+<p><strong>Products:</strong> <%= @category.products.kept.count %></p>
+
+<%= link_to "Edit", edit_admin_category_path(@category) %> |
+<%= link_to "Back to categories", admin_categories_path %>

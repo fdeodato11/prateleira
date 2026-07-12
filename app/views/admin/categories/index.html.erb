@@ -1,0 +1,33 @@
+<h1>Categories</h1>
+
+<%= link_to "New Category", new_admin_category_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Slug</th>
+      <th>Products</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= link_to category.name, admin_category_path(category) %></td>
+        <td><%= category.slug %></td>
+        <td><%= category.products.kept.count %></td>
+        <td><%= category.discarded? ? "Discarded" : "Active" %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_category_path(category) %>
+          <% if category.discarded? %>
+            <%= button_to "Restore", restore_admin_category_path(category), method: :post %>
+          <% else %>
+            <%= button_to "Delete", admin_category_path(category), method: :delete, data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
