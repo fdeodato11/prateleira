@@ -1,6 +1,6 @@
-<%= form_with model: [:admin, product], local: true do |f| %>
+<%= form_with model: [:admin, product], local: true, class: "form-card-wide" do |f| %>
   <% if product.errors.any? %>
-    <div>
+    <div class="form-errors">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
       <ul>
         <% product.errors.each do |error| %>
@@ -10,60 +10,80 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="form-group<%= " invalid" if product.errors[:name].any? %>">
     <%= f.label :name %>
     <%= f.text_field :name, required: true %>
+    <% if product.errors[:name].any? %>
+      <p class="field-error"><%= product.errors[:name].join(", ") %></p>
+    <% end %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
 
-  <div>
+  <div class="form-group<%= " invalid" if product.errors[:category].any? %>">
     <%= f.label :category_id %>
     <%= f.collection_select :category_id, Category.kept.ordered, :id, :name, prompt: "Select Category" %>
+    <% if product.errors[:category_id].any? %>
+      <p class="field-error"><%= product.errors[:category_id].join(", ") %></p>
+    <% end %>
   </div>
 
-  <div>
+  <div class="form-group<%= " invalid" if product.errors[:price].any? %>">
     <%= f.label :price %>
     <%= f.number_field :price, step: 0.01, min: 0, required: true %>
+    <% if product.errors[:price].any? %>
+      <p class="field-error"><%= product.errors[:price].join(", ") %></p>
+    <% end %>
   </div>
 
-  <div>
+  <div class="form-group<%= " invalid" if product.errors[:stock_quantity].any? %>">
     <%= f.label :stock_quantity %>
     <%= f.number_field :stock_quantity, min: 0, required: true %>
+    <% if product.errors[:stock_quantity].any? %>
+      <p class="field-error"><%= product.errors[:stock_quantity].join(", ") %></p>
+    <% end %>
   </div>
 
-  <div>
+  <div class="form-group<%= " invalid" if product.errors[:sku].any? %>">
     <%= f.label :sku %>
     <%= f.text_field :sku, required: true %>
+    <% if product.errors[:sku].any? %>
+      <p class="field-error"><%= product.errors[:sku].join(", ") %></p>
+    <% end %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :status %>
     <%= f.select :status, Product.statuses.keys.map { |s| [s.humanize, s] } %>
   </div>
 
-  <div>
-    <%= f.label :featured %>
-    <%= f.check_box :featured %>
+  <div class="form-group">
+    <label class="checkbox-label">
+      <%= f.check_box :featured %>
+      Featured
+    </label>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :weight %>
     <%= f.number_field :weight, step: 0.01 %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :image %>
     <%= f.file_field :image, accept: "image/jpeg,image/png,image/webp" %>
-    <% if product.image.attached? %>
-      <p>Current image: <%= image_tag product.image.variant(resize_to_limit: [200, 200]) if product.image.variable? %></p>
+    <% if product.image.attached? && product.image.variable? %>
+      <p style="margin-top:var(--space-sm);font-size:0.85rem;color:var(--color-text-secondary)">
+        Current image: <%= image_tag product.image.variant(resize_to_limit: [100, 100]), class: "thumbnail", style: "vertical-align:middle;margin-left:var(--space-sm)" %>
+      </p>
     <% end %>
   </div>
 
-  <div>
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", admin_products_path, class: "btn" %>
   </div>
 <% end %>

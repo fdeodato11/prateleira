@@ -1,8 +1,33 @@
-<h1><%= @category.name %></h1>
+<%= link_to "&larr; Back to categories".html_safe, admin_categories_path, class: "back-link" %>
 
-<p><strong>Slug:</strong> <%= @category.slug %></p>
-<p><strong>Description:</strong> <%= @category.description %></p>
-<p><strong>Products:</strong> <%= @category.products.kept.count %></p>
+<div class="detail-card">
+  <div class="detail-header">
+    <h1><%= @category.name %></h1>
+  </div>
 
-<%= link_to "Edit", edit_admin_category_path(@category) %> |
-<%= link_to "Back to categories", admin_categories_path %>
+  <div class="detail-body">
+    <div class="detail-grid">
+      <div class="detail-field">
+        <dt>Slug</dt>
+        <dd><%= @category.slug %></dd>
+      </div>
+      <div class="detail-field">
+        <dt>Description</dt>
+        <dd><%= @category.description %></dd>
+      </div>
+      <div class="detail-field">
+        <dt>Products</dt>
+        <dd><%= @category.products.kept.count %></dd>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-actions">
+    <%= link_to "Edit", edit_admin_category_path(@category), class: "btn btn-primary" %>
+    <% if @category.discarded? %>
+      <%= button_to "Restore", restore_admin_category_path(@category), method: :post, class: "btn" %>
+    <% else %>
+      <%= button_to "Delete", admin_category_path(@category), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    <% end %>
+  </div>
+</div>

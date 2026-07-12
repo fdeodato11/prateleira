@@ -1,12 +1,24 @@
-<h1>User: <%= @user.email_address %></h1>
+<%= link_to "&larr; Back to Users".html_safe, admin_users_path, class: "back-link" %>
 
-<dl>
-  <dt>Email</dt>
-  <dd><%= @user.email_address %></dd>
-  <dt>Admin</dt>
-  <dd><%= @user.administrator? ? "Yes" : "No" %></dd>
-  <dt>Created</dt>
-  <dd><%= l @user.created_at, format: :long %></dd>
-</dl>
+<div class="detail-card">
+  <div class="detail-header">
+    <h1><%= @user.email_address %></h1>
+  </div>
 
-<%= link_to "Back to Users", admin_users_path %>
+  <div class="detail-body">
+    <div class="detail-grid">
+      <div class="detail-field">
+        <dt>Email</dt>
+        <dd><%= @user.email_address %></dd>
+      </div>
+      <div class="detail-field">
+        <dt>Admin</dt>
+        <dd><span class="status-badge <%= @user.administrator? ? "status-active" : "status-draft" %>"><%= @user.administrator? ? "Yes" : "No" %></span></dd>
+      </div>
+      <div class="detail-field">
+        <dt>Created</dt>
+        <dd><%= l @user.created_at, format: :long %></dd>
+      </div>
+    </div>
+  </div>
+</div>

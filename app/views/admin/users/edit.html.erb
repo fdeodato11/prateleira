@@ -1,12 +1,22 @@
-<h1>Edit User: <%= @user.email_address %></h1>
-
-<%= form_with model: [:admin, @user] do |form| %>
-  <div>
-    <%= form.label :admin %>
-    <%= form.check_box :admin %>
+<div class="admin-header">
+  <h1>Edit User: <%= @user.email_address %></h1>
+  <div class="admin-actions">
+    <%= link_to "&larr; Back".html_safe, admin_users_path, class: "btn" %>
   </div>
+</div>
 
-  <%= form.submit "Update" %>
-<% end %>
+<div class="form-card">
+  <%= form_with model: [:admin, @user] do |form| %>
+    <div class="form-group">
+      <label class="checkbox-label">
+        <%= form.check_box :admin %>
+        Admin
+      </label>
+    </div>
 
-<%= link_to "Back", admin_users_path %>
+    <div class="form-actions">
+      <%= form.submit "Update", class: "btn btn-primary" %>
+      <%= link_to "Cancel", admin_users_path, class: "btn" %>
+    </div>
+  <% end %>
+</div>

@@ -1,23 +1,45 @@
 <%= turbo_frame_tag @product do %>
-  <h1><%= @product.name %></h1>
+  <%= link_to "&larr; Back to catalog".html_safe, products_path, class: "back-link" %>
 
-  <p><strong>Category:</strong> <%= @product.category.name %></p>
-  <p><strong>Price:</strong> <%= number_to_currency @product.price %></p>
-  <p><strong>Stock:</strong> <%= @product.stock_quantity %> units</p>
-  <p><strong>SKU:</strong> <%= @product.sku %></p>
-
-  <% if @product.description.present? %>
-    <div>
-      <h2>Description</h2>
-      <p><%= @product.description %></p>
+  <div class="product-show">
+    <div class="product-image-section">
+      <% if @product.image.attached? %>
+        <%= image_tag @product.image.variant(resize_to_limit: [500, 500]) if @product.image.variable? %>
+      <% end %>
     </div>
-  <% end %>
 
-  <% if @product.image.attached? %>
-    <%= image_tag @product.image.variant(resize_to_limit: [400, 400]) if @product.image.variable? %>
-  <% end %>
+    <div class="product-details">
+      <h1><%= @product.name %></h1>
 
-  <%= button_to "Add to Cart", add_item_cart_path(product_id: @product.id), class: "btn btn-primary" %>
+      <div class="product-meta">
+        <div class="product-meta-item">
+          <dt>Price</dt>
+          <dd><%= number_to_currency @product.price %></dd>
+        </div>
+        <div class="product-meta-item">
+          <dt>Stock</dt>
+          <dd><%= @product.stock_quantity %> units</dd>
+        </div>
+        <div class="product-meta-item">
+          <dt>Category</dt>
+          <dd><%= @product.category.name %></dd>
+        </div>
+        <div class="product-meta-item">
+          <dt>SKU</dt>
+          <dd><%= @product.sku %></dd>
+        </div>
+      </div>
 
-  <%= link_to "Back to catalog", products_path %>
+      <% if @product.description.present? %>
+        <div class="product-description">
+          <h2>Description</h2>
+          <p><%= @product.description %></p>
+        </div>
+      <% end %>
+
+      <div class="product-actions">
+        <%= button_to "Add to Cart", add_item_cart_path(product_id: @product.id), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
 <% end %>

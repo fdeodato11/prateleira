@@ -10,28 +10,28 @@
   </head>
 
   <body>
-    <header>
-      <nav>
-        <%= link_to "Prateleira Virtual", root_path %>
-        <div>
+    <div class="admin-layout">
+      <aside class="admin-sidebar">
+        <%= link_to "Prateleira Virtual", root_path, class: "sidebar-logo" %>
+        <nav>
           <%= link_to "Dashboard", admin_dashboard_path %>
           <%= link_to "Products", admin_products_path %>
           <%= link_to "Categories", admin_categories_path %>
           <%= link_to "Users", admin_users_path %>
-          <%= button_to "Logout", session_path, method: :delete %>
-        </div>
-      </nav>
-    </header>
+          <%= button_to "Logout", session_path, method: :delete, class: "btn btn-sm", form_class: "inline-form" %>
+        </nav>
+      </aside>
 
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
+      <div class="admin-main">
+        <% if notice %>
+          <div class="flash flash-notice"><%= notice %></div>
+        <% end %>
+        <% if alert %>
+          <div class="flash flash-alert"><%= alert %></div>
+        <% end %>
 
-    <main>
-      <%= yield %>
-    </main>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,6 +1,6 @@
 <h1>Products</h1>
 
-<%= form_tag products_path, method: :get, data: { turbo_frame: "products", turbo_action: "advance" } do %>
+<%= form_tag products_path, method: :get, data: { turbo_frame: "products", turbo_action: "advance" }, class: "search-bar" do %>
   <%= search_field_tag :query, params[:query], placeholder: "Search products..." %>
   <%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :name, params[:category_id]), include_blank: "All Categories" %>
   <%= number_field_tag :price_min, params[:price_min], placeholder: "Min price", step: 0.01 %>
@@ -13,28 +13,33 @@
     ["Name: A-Z", "name_asc"],
     ["Name: Z-A", "name_desc"]
   ], params[:sort]), include_blank: "Sort by" %>
-  <%= submit_tag "Search" %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
 <%= turbo_frame_tag "products" do %>
-  <div class="products-grid">
-    <% @products.each do |product| %>
-      <div class="product-card">
-        <% if product.image.attached? %>
-          <%= link_to product do %>
-            <%= image_tag product.image.variant(resize_to_limit: [200, 200]) %>
+  <% if @products.any? %>
+    <div class="products-grid">
+      <% @products.each do |product| %>
+        <div class="product-card">
+          <% if product.image.attached? %>
+            <%= link_to product do %>
+              <%= image_tag product.image.variant(resize_to_limit: [260, 200]), class: "product-image" %>
+            <% end %>
           <% end %>
-        <% end %>
-        <h3><%= link_to product.name, product %></h3>
-        <p><%= number_to_currency product.price %></p>
-        <p><%= product.category.name %></p>
-      </div>
-    <% end %>
-  </div>
-
-  <% if @products.empty? %>
-    <p>No products found.</p>
+          <div class="product-info">
+            <p class="product-category"><%= product.category.name %></p>
+            <h3><%= link_to product.name, product %></h3>
+            <p class="product-price"><%= number_to_currency product.price %></p>
+            <p class="product-stock"><%= product.stock_quantity %> in stock</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%== pagy_nav(@pagy) %>
+  <% else %>
+    <div class="empty-state">
+      <p>No products found matching your criteria.</p>
+      <%= link_to "Clear filters", products_path, class: "btn" %>
+    </div>
   <% end %>
-
-  <%== pagy_nav(@pagy) %>
 <% end %>

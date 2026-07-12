@@ -5,9 +5,9 @@
     "simplecov_version": "1.0.0",
     "command_name": "RSpec",
     "project_name": "Prateleira",
-    "timestamp": "2026-07-12T15:42:59.798-03:00",
+    "timestamp": "2026-07-12T15:54:47.827-03:00",
     "root": "/home/felipe/projetos/prateleira/prateleira",
-    "commit": "9ec8ceb1e31823ed494d317b6f0796c97de974e9",
+    "commit": "7d909139e7d872f9b0bd2de67846442f3f93315d",
     "primary_coverage": "line",
     "line_coverage": true,
     "branch_coverage": false,
@@ -20,7 +20,7 @@
       "omitted": 330,
       "total": 393,
       "percent": 85.24173027989822,
-      "strength": 4.982188295165394
+      "strength": 4.987277353689567
     }
   },
   "coverage": {
@@ -1416,7 +1416,7 @@
         null,
         null,
         1,
-        65,
+        67,
         null,
         null
       ],
@@ -1833,7 +1833,7 @@
         "omitted": 50,
         "total": 70,
         "percent": 92.85714285714286,
-        "strength": 15.542857142857143
+        "strength": 15.571428571428571
       },
       "files": [
         "app/models/application_record.rb",

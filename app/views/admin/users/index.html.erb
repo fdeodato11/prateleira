@@ -1,29 +1,42 @@
-<h1>Users</h1>
+<div class="admin-header">
+  <h1>Users</h1>
+  <div class="admin-actions">
+    <%= link_to "Back to Dashboard", admin_dashboard_path, class: "btn" %>
+  </div>
+</div>
 
-<%= link_to "Back to Dashboard", admin_dashboard_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Admin</th>
-      <th>Created</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email_address %></td>
-        <td><%= user.administrator? ? "Yes" : "No" %></td>
-        <td><%= l user.created_at, format: :short %></td>
-        <td>
-          <%= link_to "Show", admin_user_path(user) %>
-          <% if user != current_user %>
-            <%= link_to "Edit", edit_admin_user_path(user) %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if @users.any? %>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Admin</th>
+          <th>Created</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email_address %></td>
+            <td><span class="status-badge <%= user.administrator? ? "status-active" : "status-draft" %>"><%= user.administrator? ? "Yes" : "No" %></span></td>
+            <td><%= l user.created_at, format: :short %></td>
+            <td>
+              <div class="btn-group">
+                <%= link_to "Show", admin_user_path(user), class: "btn btn-sm" %>
+                <% if user != current_user %>
+                  <%= link_to "Edit", edit_admin_user_path(user), class: "btn btn-sm" %>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="empty-state">
+    <p>No users found.</p>
+  </div>
+<% end %>

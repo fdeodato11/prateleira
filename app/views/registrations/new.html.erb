@@ -1,35 +1,45 @@
-<h1>Sign Up</h1>
-
-<%= form_with model: @user, url: registration_path, class: "registration-form" do |form| %>
-  <% if @user.errors.any? %>
-    <div class="error-messages">
-      <h2><%= pluralize @user.errors.count, "error" %> prohibited this account from being created:</h2>
-      <ul>
-        <% @user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+<div class="auth-page">
+  <div class="auth-card">
+    <h1>Create Account</h1>
+    <div class="form-card">
+      <%= form_with model: @user, url: registration_path do |form| %>
+        <% if @user.errors.any? %>
+          <div class="form-errors">
+            <h2><%= pluralize @user.errors.count, "error" %> prohibited this account from being created:</h2>
+            <ul>
+              <% @user.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="form-group">
+          <%= form.label :email_address %>
+          <%= form.email_field :email_address, required: true, autofocus: true, class: ("invalid" if @user.errors[:email_address].any?) %>
+          <% if @user.errors[:email_address].any? %>
+            <p class="field-error"><%= @user.errors[:email_address].join(", ") %></p>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :password %>
+          <%= form.password_field :password, required: true, minlength: 6 %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :password_confirmation %>
+          <%= form.password_field :password_confirmation %>
+        </div>
+
+        <div class="form-actions">
+          <%= form.submit "Create Account", class: "btn btn-primary", style: "width:100%" %>
+        </div>
+      <% end %>
+
+      <div class="auth-links">
+        <%= link_to "Already have an account? Sign in", new_session_path %>
+      </div>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :email_address %>
-    <%= form.email_field :email_address, required: true, autofocus: true %>
   </div>
-
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, required: true, minlength: 6 %>
-  </div>
-
-  <div>
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
-  </div>
-
-  <div>
-    <%= form.submit "Create Account" %>
-  </div>
-<% end %>
-
-<p><%= link_to "Already have an account? Sign in.", new_session_path %></p>
+</div>

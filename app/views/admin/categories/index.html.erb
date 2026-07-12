@@ -1,33 +1,47 @@
-<h1>Categories</h1>
+<div class="admin-header">
+  <h1>Categories</h1>
+  <div class="admin-actions">
+    <%= link_to "New Category", new_admin_category_path, class: "btn btn-primary" %>
+  </div>
+</div>
 
-<%= link_to "New Category", new_admin_category_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Slug</th>
-      <th>Products</th>
-      <th>Status</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= link_to category.name, admin_category_path(category) %></td>
-        <td><%= category.slug %></td>
-        <td><%= category.products.kept.count %></td>
-        <td><%= category.discarded? ? "Discarded" : "Active" %></td>
-        <td>
-          <%= link_to "Edit", edit_admin_category_path(category) %>
-          <% if category.discarded? %>
-            <%= button_to "Restore", restore_admin_category_path(category), method: :post %>
-          <% else %>
-            <%= button_to "Delete", admin_category_path(category), method: :delete, data: { confirm: "Are you sure?" } %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if @categories.any? %>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Slug</th>
+          <th>Products</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+          <tr>
+            <td><%= link_to category.name, admin_category_path(category) %></td>
+            <td><%= category.slug %></td>
+            <td><%= category.products.kept.count %></td>
+            <td><span class="status-badge <%= category.discarded? ? "status-inactive" : "status-active" %>"><%= category.discarded? ? "Discarded" : "Active" %></span></td>
+            <td>
+              <div class="btn-group">
+                <%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-sm" %>
+                <% if category.discarded? %>
+                  <%= button_to "Restore", restore_admin_category_path(category), method: :post, class: "btn btn-sm" %>
+                <% else %>
+                  <%= button_to "Delete", admin_category_path(category), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="empty-state">
+    <p>No categories yet.</p>
+    <%= link_to "Create your first category", new_admin_category_path, class: "btn btn-primary" %>
+  </div>
+<% end %>
