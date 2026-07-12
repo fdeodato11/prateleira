@@ -3,7 +3,6 @@ require "open-uri"
 
 puts "Creating admin user..."
 User.create!(
-  name: "Administrador",
   email_address: "admin@prateleira.com",
   password: "password123",
   admin: true
@@ -20,7 +19,7 @@ categories.each do |name|
   )
 end
 
-puts "Creating products..."
+puts "Creating products with images..."
 categories = Category.all
 statuses = Product.statuses.keys
 
@@ -33,14 +32,23 @@ statuses = Product.statuses.keys
     stock_quantity: Faker::Number.between(from: 0, to: 200),
     sku: "SKU-#{Faker::Alphanumeric.alpha(number: 8).upcase}",
     status: statuses.sample,
-    featured: [ true, false ].sample,
+    featured: [true, false].sample,
     weight: Faker::Number.between(from: 50, to: 5000)
   )
 
   product.save!
+
+  url = URI.parse("https://picsum.photos/seed/#{i + 1}/400/400")
+  file = url.open
+  product.image.attach(
+    io: file,
+    filename: "product_#{i + 1}.jpg",
+    content_type: "image/jpeg"
+  )
 end
 
 puts "Done! Created:"
 puts "  #{User.count} admin user"
 puts "  #{Category.count} categories"
 puts "  #{Product.count} products"
+puts "  #{ActiveStorage::Attachment.count} image attachments"
