@@ -20,6 +20,11 @@
   <div class="products-grid">
     <% @products.each do |product| %>
       <div class="product-card">
+        <% if product.image.attached? %>
+          <%= link_to product do %>
+            <%= image_tag product.image.variant(resize_to_limit: [200, 200]) %>
+          <% end %>
+        <% end %>
         <h3><%= link_to product.name, product %></h3>
         <p><%= number_to_currency product.price %></p>
         <p><%= product.category.name %></p>

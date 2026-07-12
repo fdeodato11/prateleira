@@ -12,6 +12,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Name</th>
       <th>Category</th>
       <th>Price</th>
@@ -24,6 +25,11 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+        <td>
+          <% if product.image.attached? %>
+            <%= image_tag product.image.variant(resize_to_limit: [50, 50]) %>
+          <% end %>
+        </td>
         <td><%= link_to product.name, admin_product_path(product) %></td>
         <td><%= product.category.name %></td>
         <td><%= number_to_currency product.price %></td>
