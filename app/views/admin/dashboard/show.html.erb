@@ -10,6 +10,10 @@
     <p>Active</p>
   </div>
   <div>
+    <h3><%= @draft_products %></h3>
+    <p>Drafts</p>
+  </div>
+  <div>
     <h3><%= @discarded_products %></h3>
     <p>Deleted</p>
   </div>
@@ -17,6 +21,30 @@
     <h3><%= @total_categories %></h3>
     <p>Categories</p>
   </div>
+  <div>
+    <h3><%= @total_users %></h3>
+    <p>Users</p>
+  </div>
+</div>
+
+<div class="dashboard-charts">
+  <div>
+    <h2>Products by Category</h2>
+    <%= column_chart @products_by_category, height: "250px", colors: ["#2563eb"] %>
+  </div>
+
+  <div>
+    <h2>Products by Status</h2>
+    <%= pie_chart @products_by_status, height: "250px", colors: ["#10b981", "#f59e0b", "#ef4444", "#6b7280"] %>
+  </div>
+</div>
+
+<h2>Quick Actions</h2>
+<div class="quick-actions">
+  <%= link_to "New Product", new_admin_product_path, class: "btn" %>
+  <%= link_to "New Category", new_admin_category_path, class: "btn" %>
+  <%= link_to "Manage Products", admin_products_path, class: "btn" %>
+  <%= link_to "Manage Categories", admin_categories_path, class: "btn" %>
 </div>
 
 <h2>Recent Products</h2>
@@ -34,5 +62,3 @@
     <% end %>
   </ul>
 <% end %>
-
-<%= link_to "Manage Products", admin_products_path %>

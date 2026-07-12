@@ -5,9 +5,9 @@ window.SIMPLECOV_DATA = {
     "simplecov_version": "1.0.0",
     "command_name": "RSpec",
     "project_name": "Prateleira",
-    "timestamp": "2026-07-12T15:32:09.429-03:00",
+    "timestamp": "2026-07-12T15:33:27.973-03:00",
     "root": "/home/felipe/projetos/prateleira/prateleira",
-    "commit": "859fcfef7e10b3ffaa2aa8b87cf6d1bfa35ae1cb",
+    "commit": "60aa631d16811062acce5dda1b6f91d281a490dd",
     "primary_coverage": "line",
     "line_coverage": true,
     "branch_coverage": false,
@@ -15,12 +15,12 @@ window.SIMPLECOV_DATA = {
   },
   "total": {
     "lines": {
-      "covered": 260,
+      "covered": 265,
       "missed": 55,
-      "omitted": 269,
-      "total": 315,
-      "percent": 82.53968253968254,
-      "strength": 5.0095238095238095
+      "omitted": 277,
+      "total": 320,
+      "percent": 82.8125,
+      "strength": 4.95625
     }
   },
   "coverage": {
@@ -223,10 +223,23 @@ window.SIMPLECOV_DATA = {
         "",
         "      @total_products = Product.count",
         "      @active_products = Product.kept.active.count",
+        "      @draft_products = Product.kept.draft.count",
         "      @discarded_products = Product.discarded.count",
         "      @total_categories = Category.kept.count",
+        "      @total_users = User.count",
+        "",
         "      @recent_products = Product.kept.ordered.limit(5)",
         "      @low_stock_products = Product.kept.where(\"stock_quantity <= ?\", 10).ordered",
+        "",
+        "      @products_by_category = Category.kept",
+        "        .joins(:products)",
+        "        .where(products: { discarded_at: nil })",
+        "        .group(:name)",
+        "        .count(:id)",
+        "",
+        "      @products_by_status = Product.statuses.keys.index_with do |status|",
+        "        Product.public_send(status).count",
+        "      end",
         "    end",
         "  end",
         "end"
@@ -244,14 +257,27 @@ window.SIMPLECOV_DATA = {
         1,
         1,
         null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null,
         null,
         null
       ],
       "lines_covered_percent": 100.0,
-      "covered_lines": 10,
+      "covered_lines": 15,
       "missed_lines": 0,
-      "omitted_lines": 4,
-      "total_lines": 10
+      "omitted_lines": 12,
+      "total_lines": 15
     },
     "app/controllers/admin/products_controller.rb": {
       "source": [
@@ -1449,12 +1475,12 @@ window.SIMPLECOV_DATA = {
   "groups": {
     "Controllers": {
       "lines": {
-        "covered": 151,
+        "covered": 156,
         "missed": 27,
-        "omitted": 153,
-        "total": 178,
-        "percent": 84.8314606741573,
-        "strength": 2.601123595505618
+        "omitted": 161,
+        "total": 183,
+        "percent": 85.24590163934427,
+        "strength": 2.5737704918032787
       },
       "files": [
         "app/controllers/admin/base_controller.rb",
