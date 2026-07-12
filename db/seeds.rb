@@ -4,7 +4,8 @@ puts "Creating admin user..."
 User.create!(
   name: "Administrador",
   email_address: "admin@prateleira.com",
-  password: "password123"
+  password: "password123",
+  admin: true
 )
 
 puts "Creating categories..."

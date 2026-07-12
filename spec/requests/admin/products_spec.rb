@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Admin::Products", type: :request do
-  let(:admin) { create(:user) }
+  let(:admin) { create(:user, :admin) }
   let(:category) { create(:category) }
 
   describe "GET /admin/products" do
@@ -101,6 +101,12 @@ RSpec.describe "Admin::Products", type: :request do
     it "redirects unauthenticated users to sign in" do
       get admin_products_path
       expect(response).to redirect_to(new_session_path)
+    end
+
+    it "redirects non-admin users to root" do
+      sign_in(create(:user))
+      get admin_products_path
+      expect(response).to redirect_to(root_path)
     end
   end
 end
