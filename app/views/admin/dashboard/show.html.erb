@@ -1,0 +1,38 @@
+<h1>Dashboard</h1>
+
+<div class="dashboard-stats">
+  <div>
+    <h3><%= @total_products %></h3>
+    <p>Total Products</p>
+  </div>
+  <div>
+    <h3><%= @active_products %></h3>
+    <p>Active</p>
+  </div>
+  <div>
+    <h3><%= @discarded_products %></h3>
+    <p>Deleted</p>
+  </div>
+  <div>
+    <h3><%= @total_categories %></h3>
+    <p>Categories</p>
+  </div>
+</div>
+
+<h2>Recent Products</h2>
+<ul>
+  <% @recent_products.each do |product| %>
+    <li><%= link_to product.name, admin_product_path(product) %> - <%= number_to_currency product.price %></li>
+  <% end %>
+</ul>
+
+<% if @low_stock_products.any? %>
+  <h2>Low Stock Alert</h2>
+  <ul>
+    <% @low_stock_products.each do |product| %>
+      <li><%= link_to product.name, admin_product_path(product) %> - <%= product.stock_quantity %> units remaining</li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to "Manage Products", admin_products_path %>

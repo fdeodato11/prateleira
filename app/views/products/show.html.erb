@@ -1,0 +1,21 @@
+<%= turbo_frame_tag @product do %>
+  <h1><%= @product.name %></h1>
+
+  <p><strong>Category:</strong> <%= @product.category.name %></p>
+  <p><strong>Price:</strong> <%= number_to_currency @product.price %></p>
+  <p><strong>Stock:</strong> <%= @product.stock_quantity %> units</p>
+  <p><strong>SKU:</strong> <%= @product.sku %></p>
+
+  <% if @product.description.present? %>
+    <div>
+      <h2>Description</h2>
+      <p><%= @product.description %></p>
+    </div>
+  <% end %>
+
+  <% if @product.image.attached? %>
+    <%= image_tag @product.image.variant(resize_to_limit: [400, 400]) if @product.image.variable? %>
+  <% end %>
+
+  <%= link_to "Back to catalog", products_path %>
+<% end %>

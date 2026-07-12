@@ -1,0 +1,47 @@
+<h1>Products</h1>
+
+<%= link_to "New Product", new_admin_product_path %>
+
+<%= form_tag admin_products_path, method: :get do %>
+  <%= search_field_tag :query, params[:query], placeholder: "Search..." %>
+  <%= select_tag :category_id, options_from_collection_for_select(Category.kept.ordered, :id, :name, params[:category_id]), include_blank: "All Categories" %>
+  <%= select_tag :status, options_for_select(Product.statuses.keys.map { |s| [s.humanize, s] }, params[:status]), include_blank: "All Statuses" %>
+  <%= submit_tag "Filter" %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Stock</th>
+      <th>SKU</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, admin_product_path(product) %></td>
+        <td><%= product.category.name %></td>
+        <td><%= number_to_currency product.price %></td>
+        <td><%= product.stock_quantity %></td>
+        <td><%= product.sku %></td>
+        <td><%= product.status.humanize %></td>
+        <td>
+          <%= link_to "View", admin_product_path(product) %>
+          <%= link_to "Edit", edit_admin_product_path(product) %>
+          <% if product.discarded? %>
+            <%= button_to "Restore", restore_admin_product_path(product), method: :post %>
+          <% else %>
+            <%= button_to "Delete", admin_product_path(product), method: :delete, data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%== pagy_nav(@pagy) %>
