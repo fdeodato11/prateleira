@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
+  resource :registration, only: %i[new create]
 
   # Public routes
   resources :products, only: %i[index show]
