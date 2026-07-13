@@ -1,44 +1,90 @@
 <%= turbo_frame_tag @product do %>
-  <%= link_to products_path, class: "back-link" do %><%= icon("arrow-left") %> Back to catalog<% end %>
+  <%= link_to products_path, class: "back-link" do %>
+    <%= icon("arrow-left", size: 16) %> <%= t("labels.back_to_catalog") %>
+  <% end %>
 
   <div class="product-show">
-    <div class="product-image-section">
-      <% if @product.image.attached? %>
-        <%= image_tag @product.image.variant(resize_to_limit: [500, 500]) if @product.image.variable? %>
-      <% end %>
+    <div class="product-show__gallery">
+      <div class="product-show__image-wrapper">
+        <% if @product.image.attached? %>
+          <%= image_tag @product.image.variant(resize_to_limit: [600, 600]), alt: @product.name, class: "product-show__image" %>
+        <% else %>
+          <div class="product-show__no-image">
+            <%= icon("image", size: 64) %>
+          </div>
+        <% end %>
+      </div>
     </div>
 
-    <div class="product-details">
-      <h1><%= @product.name %></h1>
+    <div class="product-show__info">
+      <% if @product.source.present? %>
+        <div class="product-show__source">
+          <span class="source-badge source-<%= @product.source %>">
+            <%= icon("globe", size: 12) %> <%= t("labels.#{@product.source}", default: @product.source.humanize) %>
+          </span>
+        </div>
+      <% end %>
 
-      <div class="product-meta">
-        <div class="product-meta-item">
-          <dt><%= icon("tag") %> <%= t("labels.price") %></dt>
-          <dd><%= number_to_currency @product.price %></dd>
-        </div>
-        <div class="product-meta-item">
-          <dt><%= icon("package") %> <%= t("labels.stock") %></dt>
-          <dd><%= @product.stock_quantity %> <%= t("labels.units") %></dd>
-        </div>
-        <div class="product-meta-item">
-          <dt><%= icon("category") %> <%= t("labels.category") %></dt>
-          <dd><%= @product.category.name %></dd>
-        </div>
-        <div class="product-meta-item">
-          <dt><%= t("labels.sku") %></dt>
-          <dd><%= @product.sku %></dd>
+      <h1 class="product-show__name"><%= @product.name %></h1>
+
+      <div class="product-show__pricing">
+        <% if @product.original_price.present? && @product.original_price > @product.price %>
+          <span class="product-show__original-price"><%= number_to_currency @product.original_price %></span>
+          <span class="product-show__discount">
+            -<%= ((@product.original_price - @product.price) / @product.original_price * 100).round %>% OFF
+          </span>
+        <% end %>
+        <div class="product-show__current-price">
+          <%= number_to_currency @product.price %>
         </div>
       </div>
 
+      <div class="product-show__details">
+        <div class="product-show__detail">
+          <span class="product-show__detail-label"><%= icon("package", size: 16) %> <%= t("labels.stock") %></span>
+          <span class="product-show__detail-value"><%= @product.stock_quantity %> <%= t("labels.units") %></span>
+        </div>
+        <div class="product-show__detail">
+          <span class="product-show__detail-label"><%= icon("category", size: 16) %> <%= t("labels.category") %></span>
+          <span class="product-show__detail-value"><%= @product.category.name %></span>
+        </div>
+        <div class="product-show__detail">
+          <span class="product-show__detail-label"><%= icon("tag", size: 16) %> SKU</span>
+          <span class="product-show__detail-value"><%= @product.sku %></span>
+        </div>
+        <% if @product.rating.present? && @product.rating > 0 %>
+          <div class="product-show__detail">
+            <span class="product-show__detail-label"><%= icon("star", size: 16) %> <%= t("labels.rating") %></span>
+            <span class="product-show__detail-value">
+              <%= icon("star", size: 14) %> <%= @product.rating %>
+              <% if @product.reviews_count.present? && @product.reviews_count > 0 %>
+                (<%= @product.reviews_count %> <%= t("labels.reviews").downcase %>)
+              <% end %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+
       <% if @product.description.present? %>
-        <div class="product-description">
+        <div class="product-show__description">
           <h2><%= t("labels.description") %></h2>
           <p><%= @product.description %></p>
         </div>
       <% end %>
 
-      <div class="product-actions">
-        <%= button_to add_item_cart_path(product_id: @product.id), class: "btn btn-primary" do %><%= icon("shopping-cart") %> <%= t("labels.add_to_cart") %><% end %>
+      <div class="product-show__actions">
+        <%= button_to add_item_cart_path(product_id: @product.id), class: "btn btn-primary btn-lg", data: { turbo: false } do %>
+          <%= icon("shopping-cart", size: 20) %> <%= t("labels.add_to_cart") %>
+        <% end %>
+
+        <% if @product.external_url.present? %>
+          <%= link_to "https://#{@product.external_url.sub(%r{^https?://}, "")}",
+              target: :_blank,
+              class: "btn btn-secondary btn-lg",
+              rel: "noopener" do %>
+            <%= icon("external-link", size: 20) %> <%= t("labels.buy_on") %> <%= t("labels.#{@product.source}", default: @product.source.humanize) %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

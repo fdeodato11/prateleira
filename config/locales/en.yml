@@ -122,7 +122,7 @@ en:
     update_product: "Update Product"
     weight: "Weight"
 
-  product_status:
+  labels:
     sign_in: "Sign In"
     sign_up: "Sign Up"
     logout: "Logout"
@@ -211,6 +211,24 @@ en:
     loading: "Loading..."
     one_error_prohibited: "error prohibited from being saved"
     other_errors_prohibited: "errors prohibited from being saved"
+    buy_on: "Buy on"
+    visit_store: "Visit store"
+    source: "Source"
+    mercadolivre: "Mercado Livre"
+    shopee: "Shopee"
+    from_price: "from"
+    products_found: "products found"
+    clear: "Clear"
+    pagination: "Pagination"
+    previous_page: "Previous page"
+    next_page: "Next page"
+    previous: "Previous"
+    next: "Next"
+    showing: "Showing"
+    of: "of"
+    try_adjusting_filters: "Try adjusting your filters to find more products."
+    rating: "Rating"
+    reviews: "reviews"
 
   product_status:
     active: "Active"

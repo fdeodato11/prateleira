@@ -18,7 +18,7 @@ RSpec.describe "Products", type: :request do
     it "paginates results" do
       create_list(:product, 15, status: :active)
       get products_path
-      expect(response.body).to include("pagy")
+      expect(response.body).to include("pagination-footer")
     end
 
     it "filters by category" do
