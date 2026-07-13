@@ -56,9 +56,9 @@
       <p><%= @product.description %></p>
     <% end %>
 
-    <% if @product.image.attached? %>
+    <% if @product.image.attached? && @product.image.variable? %>
       <h2><%= t("labels.image") %></h2>
-      <%= image_tag @product.image.variant(resize_to_limit: [400, 400]) if @product.image.variable?, class: "detail-image" %>
+      <%= image_tag @product.image.variant(resize_to_limit: [400, 400]), class: "detail-image" %>
     <% end %>
   </div>
 
