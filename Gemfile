@@ -49,7 +49,7 @@ gem "pundit", "~> 2.4"
 gem "discard", "~> 2.0"
 
 # Pagination
-gem "pagy", "~> 9.3"
+gem "pagy", "~> 43.6"
 
 # Charts for admin dashboard
 gem "chartkick"
